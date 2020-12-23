@@ -1,0 +1,2 @@
+<!--pages/login-tem/login-tem.wxml-->
+<view>Exhibitors Name:{{companyName}}</view>
