@@ -1,0 +1,10 @@
+<!--pages/landing/landing.wxml-->
+<view class="full-screen landing-page-container">
+    <!-- <image src="../../images/landing_page_bg.jpg" alt="Promote Iceland Landing Page Background Image" mode="scaleToFill" class="full-screen"></image> -->
+    <image src="../../images/VisitIceland-logo-color.png" alt="Iceland Logo" mode="aspectFit" class="landing-page-logo"></image>
+    <text class="landing-page-text">冰岛，世界尽头的仙境</text>
+    <view>
+        <input class="landing-page-input" type="input" placeholder="请输入邀请码..." placeholder-class="landing-page-input-placeholder"/>
+        <button class="landing-page-button" size="default">参加线上展会  →</button>
+    </view>
+</view>
