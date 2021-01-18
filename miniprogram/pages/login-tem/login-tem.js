@@ -11,7 +11,7 @@ Page({
     userInfo:"",
     avatarUrl:"",
     userInfo:"",
-    companyName:""
+    exhibitorInfo:""
   },
 
   /**
@@ -35,7 +35,14 @@ Page({
       // res.data 包含该记录的数据
       console.log(res.data)
       this.setData({
-        companyName: res.data.iceland_exhibitor_name
+        exhibitorInfo: res.data,
+        exhibitorName: res.data.iceland_exhibitors_name,
+        exhibitorImage: res.data.iceland_exhibitors_image,
+        exhibitorWeb: res.data.iceland_exhibitors_web,
+        exhibitorPhone: res.data.iceland_exhibitors_phone,
+        exhibitorEmail: res.data.iceland_exhibitors_email,
+        exhibitorDes: res.data.iceland_exhibitors_des,
+        exhibitorFile: res.data.iceland_exhibitors_file,
       })
     })
 

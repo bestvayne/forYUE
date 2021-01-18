@@ -1,2 +1,8 @@
 <!--pages/login-tem/login-tem.wxml-->
-<view>Exhibitors Name:{{companyName}}</view>
+<image src="{{exhibitorImage}}" alt="Exhibitor Image"></image>
+<view>Exhibitors Name:{{exhibitorName}}</view>
+<view>Exhibitors Web:{{exhibitorWeb}}</view>
+<view>Exhibitors Phone:{{exhibitorPhone}}</view>
+<view>Exhibitors Email:{{exhibitorEmail}}</view>
+<view>Exhibitors Des:{{exhibitorDes}}</view>
+<view>Exhibitors File:{{exhibitorFile}}</view>

@@ -1,7 +1,10 @@
 {
   "pages": [
+    "pages/landing/landing",
     "pages/login-tem/login-tem",
     "pages/index/index",
+    "pages/exhibitor/exhibitor",
+    "pages/aboutIceland/aboutIceland",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
