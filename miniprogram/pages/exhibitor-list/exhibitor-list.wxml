@@ -1,5 +1,5 @@
 <!--pages/exhibitor-list/exhibitor-list.wxml-->
-<view class="container">
+<view class="full-screen container">
     <text class="text">EXHIBITOR</text>
     <text class="text">参展商</text>
 </view>
