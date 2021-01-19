@@ -1,0 +1,52 @@
+<!--pages/home/home.wxml-->
+<view class="full-screen container">
+
+    <view class="title-container">
+        <image src="../../images/Visit-Iceland-color-logo-with-white-text-right.png" alt="Iceland Logo" mode="aspectFit" class="logo"></image>
+        <text class="text">欢迎来到冰岛旅游局</text>
+    </view>
+
+    <view class="nav-container">
+        <view class="nav-icon-list">
+            <view class="icon-container">
+                <navigator url="" class="nav-style">
+                    <image class="icon" src="../../images/about.png" alt="Promote Iceland About Us"></image>
+                    <text class="icon-text">关于我们</text>
+                </navigator>
+            </view>
+            <view class="icon-container">
+                <navigator url="" class="nav-style">
+                    <image class="icon" src="../../images/schedule.png" alt="Promote Iceland Schedule"></image>
+                    <text class="icon-text">展会日程</text>
+                </navigator>
+            </view>
+            <view class="icon-container">
+                <navigator url="" class="nav-style">
+                    <image class="icon" src="../../images/exhibitor.png" alt="Promote Iceland Exhibitor"></image>
+                    <text class="icon-text">展商介绍</text>
+                </navigator>
+            </view>
+            <view class="icon-container">
+                <navigator url="" class="nav-style">
+                    <image class="icon" src="../../images/meeting.png" alt="Promote Iceland Meeting"></image>
+                    <text class="icon-text">预约会议</text>
+                </navigator>
+            </view>
+        </view>
+    </view>
+    
+    <view class="card-content">
+            <navigator class="card">
+                <image class="card-bg" src="../../images/about-Iceland.png"></image>
+            </navigator>
+            <navigator class="card">
+                <image class="card-bg" src="../../images/schedule-bg.png"></image>
+            </navigator>
+            <navigator class="card">
+                <image class="card-bg" src="../../images/about-exhibitor.png"></image>
+            </navigator>
+            <navigator class="card">
+                <image class="card-bg" src="../../images/book-meeting.png"></image>
+            </navigator>
+    </view>
+</view>
