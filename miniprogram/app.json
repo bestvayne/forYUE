@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/home/home",
+    "pages/exhibitor-list/exhibitor-list",
     "pages/landing/landing",
+    "pages/home/home",
     "pages/login-tem/login-tem",
     "pages/index/index",
     "pages/exhibitor/exhibitor",

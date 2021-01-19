@@ -1,4 +1,4 @@
-// pages/landing/landing.js
+// pages/exhibitor-list/exhibitor-list.js
 Page({
 
     /**
@@ -13,12 +13,6 @@ Page({
      */
     onLoad: function (options) {
 
-    },
-
-    goToExhibition:function(){
-        wx.navigateTo({
-            url:"/pages/home/home",
-        })
     },
 
     /**
