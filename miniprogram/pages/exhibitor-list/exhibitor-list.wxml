@@ -4,3 +4,32 @@
     <text class="text">参展商</text>
 </view>
 
+<view class="exhitbitor-list-container">
+    <view class="exhibitor-content">
+        <view class="exhibitor-preview-info">
+            <view>
+                <text class="exhibitor-name">Gray Line Iceland</text>
+                <text class="exhibitor-text">旅行社</text>
+            </view>
+            <text class="exhibitor-intro">GrayLine Iceland是一家获得授权的旅行社，有着超过30年的行业经验，提供前往冰岛全国各个景点的旅游服务，我们拥有专业的知识、</text>
+        </view>
+        <view class="exhibitor-preview-image-container">
+            <image src="../../images/exhibitor-1.jpg" class="exhibitor-preview-image" mode="aspectFit"></image>
+        </view>
+    </view>
+</view>
+
+<view class="exhitbitor-list-container">
+    <view class="exhibitor-content">
+        <view class="exhibitor-preview-info">
+            <view>
+                <text class="exhibitor-name">Gray Line Iceland</text>
+                <text class="exhibitor-text">旅行社</text>
+            </view>
+            <text class="exhibitor-intro">GrayLine Iceland是一家获得授权的旅行社，有着超过30年的行业经验，提供前往冰岛全国各个景点的旅游服务，我们拥有专业的知识、</text>
+        </view>
+        <view class="exhibitor-preview-image-container">
+            <image src="../../images/exhibitor-1.jpg" class="exhibitor-preview-image" mode="aspectFit"></image>
+        </view>
+    </view>
+</view>

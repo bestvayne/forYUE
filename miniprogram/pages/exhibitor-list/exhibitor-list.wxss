@@ -1,4 +1,9 @@
 /* pages/exhibitor-list/exhibitor-list.wxss */
+page{
+    width: 100%;
+    height: 100%;
+}
+
 .full-screen{
     width: 100%;
     height: 100%;
@@ -14,7 +19,7 @@
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width: 100%;
-    height: 200px;
+    height: 400rpx;
 }
 
 .text{
@@ -24,3 +29,59 @@
     padding: 5px 0;
 }
 
+.exhitbitor-list-container{
+    width: 100%;
+    height: 420rpx;
+    background-color: #FFFFFF;
+    margin-bottom: 10px;
+}
+
+.exhibitor-content{
+    width: 100%;
+    height: 80%;
+    padding: 20px;
+    display: flex;
+
+}
+
+.exhibitor-preview-info{
+    width: 40%;
+    /* margin-right: 20rpx; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.exhibitor-name{
+    color: gray;
+    font-size: 36rpx;
+    font-weight: 600;
+}
+
+.exhibitor-text{
+    font-size: 36rpx;
+    font-weight: 600;
+}
+
+.exhibitor-intro{
+    font-size: 26rpx;
+    color: gray;
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: normal !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.exhibitor-preview-image-container{
+    width: 50%;
+    height: 100%;
+    margin-left: 20rpx;
+}
+
+.exhibitor-preview-image{
+    width: 100%;
+    height: 100%;
+}
