@@ -1,1 +1,340 @@
 /* pages/exhibitor/exhibitor.wxss */
+.page-container{
+    width: 100%;
+    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background: #ffffff;
+}
+
+.exhibitors-header-container{
+    width: 90%;
+    height: 400rpx;
+    position: relative;
+}
+
+.header-image{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.exhibitors-text-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 50%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 10rpx 20rpx;
+}
+
+.exhibitors-name{
+    font-size: 50rpx;
+    color: #FFFFFF;
+}
+
+.exhibitors-title{
+    font-size: 50rpx;
+    color: #FFFFFF;
+    font-weight: 600;
+}
+
+.solid-white-3px{
+    background: #ffffff;
+    width: 10%;
+    height: 3px;
+}
+
+.exhibitors-introduction-contaienr{
+    margin: 70rpx 0;
+    width: 90%;
+    height: 220rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.exhibitors-introduction-text-1{
+    font-size: 48rpx;
+    color: #191414;
+    letter-spacing: 0.4px;
+}
+
+.exhibitors-introduction-text-2{
+    font-size: 32rpx;
+    color: #373D40;
+    letter-spacing: 0;
+    font-weight: 600;
+}
+
+.solid-balck-3px{
+    width: 8%;
+    border: 6rpx solid #191414;
+}
+
+.exhibitors-video-container{
+    width: 90%;
+    height: 400rpx;
+}
+
+.video{
+    width: 100%;
+    height: 100%;
+}
+
+.text-isShow-section-container{
+    width: 90%;
+}
+
+.text-isHidden-section-container{
+    width: 90%;
+    height: 250rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    white-space: normal !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.isShow-up-arrow-container{
+    width: 90%;
+    height: 30rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.isShow-up-arrow{
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.text-section{
+    width: 100%;
+    margin-top: 50rpx;
+}
+
+.exhibitor-des-text{
+    font-size: 28rpx;
+    color: #373D40;
+    letter-spacing: 2rpx;
+    line-height: 50rpx;
+}
+
+.content-image-container{
+    width: 100%;
+    height: auto;
+}
+
+.content-image{
+    width: 100%;
+}
+
+.solid-balck-3px-20{
+    width: 20%;
+    margin-top: 20px;
+    border: 3rpx solid #191414;
+}
+
+.exhibitors-contact-contaienr{
+    margin: 70rpx 0;
+    width: 90%;
+    height: 220rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.exhibitors-contact-text-1{
+    font-size: 48rpx;
+    color: #191414;
+    letter-spacing: 0.4px;
+}
+
+.exhibitors-contact-text-2{
+    font-size: 32rpx;
+    color: #373D40;
+    letter-spacing: 0;
+}
+
+.contact-container{
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.single-contact-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin: 10rpx 0;
+}
+
+.contact-content-container{
+    width: 90%;
+    display: flex;
+    align-items: center;
+}
+
+.icon-contact{
+    width: 40rpx;
+    height: 40rpx;
+    margin-right: 20rpx;
+}
+
+.contact-text{
+    font-size: 28rpx;
+    color: #373D40;
+    letter-spacing: 0;
+    line-height: 26px;
+}
+
+.contact-content-arrow{
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.solid-balck-3px-20-right{
+    align-self: flex-end;
+    width: 20%;
+    margin-top: 20px;
+    border: 3rpx solid #191414;
+}
+
+.download-container{
+    width: 100%;
+    margin-bottom: 70rpx;
+}
+
+.single-download-container{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10rpx 0;
+}
+
+.icon-download{
+    width: 80rpx;
+    height: 80rpx;
+    margin-right: 20rpx;
+}
+
+.download-text{
+    font-size: 28rpx;
+    color: #373D40;
+    letter-spacing: 0;
+    line-height: 26px;
+}
+
+.card-container{
+    display: flex;
+    justify-content: center;
+}
+
+.socia-card{
+    background:#ffffff;
+    width: 94%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.wechat-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.exhibitors-logo{
+    width: 220rpx;
+    height: 180rpx;
+    margin: 60rpx 0;
+}
+
+.wechat-account-text{
+    font-size: 28rpx;
+    color: #373D40;
+    letter-spacing: 1px;
+    line-height: 25px;
+    font-weight: 600;
+}
+
+.wechat-tip-text{
+    font-size: 24rpx;
+    color: #727272;
+    letter-spacing: 1.11px;
+    text-align: center;
+    line-height: 25px;
+    margin: 30rpx 0;
+}
+
+.wechat-qr{
+    width: 200rpx;
+    height: 200rpx;
+}
+
+.solid-balck-1px-90{
+    width: 90%;
+    border: 1px solid #373D40;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.socia-list-container{
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 150rpx;
+}
+
+.single-socia-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.socia-icon{
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.socia-name{
+    font-size: 22rpx;
+    color: #373D40;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 25px;
+}
+
+.meeting-btn{
+    width: 110%;
+    height: 100rpx;
+    background: #191414;
+    font-size: 32rpx;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    position:fixed; 
+    bottom:0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.meeting-icon{
+    margin-left: 20rpx;
+    width: 30rpx;
+    height: 30rpx;
+}

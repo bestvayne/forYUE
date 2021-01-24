@@ -9,7 +9,7 @@
     <view class="nav-container">
         <view class="nav-icon-list">
             <view class="icon-container">
-                <navigator url="" class="nav-style">
+                <navigator url="/pages/aboutIceland/aboutIceland" class="nav-style">
                     <image class="icon" src="../../images/about.png" alt="Promote Iceland About Us"></image>
                     <text class="icon-text">关于我们</text>
                 </navigator>
@@ -22,6 +22,12 @@
             </view>
             <view class="icon-container">
                 <navigator url="" class="nav-style">
+                    <image class="icon" src="../../images/icon-live.png" alt="Promote Iceland Schedule"></image>
+                    <text class="icon-text"> 现场直播</text>
+                </navigator>
+            </view>
+            <view class="icon-container">
+                <navigator url="/pages/exhibitor-list/exhibitor-list" class="nav-style">
                     <image class="icon" src="../../images/exhibitor.png" alt="Promote Iceland Exhibitor"></image>
                     <text class="icon-text">展商介绍</text>
                 </navigator>
@@ -36,17 +42,17 @@
     </view>
     
     <view class="card-content">
-            <navigator class="card">
-                <image class="card-bg" src="../../images/about-Iceland.png"></image>
+            <navigator url="/pages/aboutIceland/aboutIceland" class="card">
+                <image class="card-bg" src="../../images/home-about-Iceland.png"></image>
             </navigator>
             <navigator class="card">
-                <image class="card-bg" src="../../images/schedule-bg.png"></image>
+                <image class="card-bg" src="../../images/home-schedule.png"></image>
+            </navigator>
+            <navigator url="/pages/exhibitor-list/exhibitor-list" class="card">
+                <image class="card-bg" src="../../images/home-about-exhibitors.png"></image>
             </navigator>
             <navigator class="card">
-                <image class="card-bg" src="../../images/about-exhibitor.png"></image>
-            </navigator>
-            <navigator class="card">
-                <image class="card-bg" src="../../images/book-meeting.png"></image>
+                <image class="card-bg" src="../../images/home-book-meeting.png"></image>
             </navigator>
     </view>
 </view>

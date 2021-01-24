@@ -15,7 +15,7 @@ page{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url("https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/exhibitor-header-bg.png?sign=24feadd6ba01c340df165ecbe470a17b&t=1611046434");
+    background-image: url("https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/exhibitors-list.png?sign=084c90b4db2e350b5413d13a3c1951e9&t=1611407067");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     width: 100%;
@@ -39,17 +39,22 @@ page{
 .exhibitor-content{
     width: 100%;
     height: 80%;
-    padding: 20px;
+    padding: 35rpx;
     display: flex;
 
 }
 
 .exhibitor-preview-info{
     width: 40%;
-    /* margin-right: 20rpx; */
     display: flex;
+    padding: 40rpx 0;
     flex-direction: column;
     justify-content: space-around;
+}
+
+.exhibitor-name-container{
+    display: flex;
+    flex-direction: column;
 }
 
 .exhibitor-name{
@@ -61,6 +66,12 @@ page{
 .exhibitor-text{
     font-size: 36rpx;
     font-weight: 600;
+}
+
+.solid{
+    background: #353D40;
+    width: 20%;
+    height: 5px;
 }
 
 .exhibitor-intro{

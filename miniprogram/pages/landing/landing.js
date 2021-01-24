@@ -5,7 +5,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        inputValue:''
     },
 
     /**
@@ -15,10 +15,33 @@ Page({
 
     },
 
-    goToExhibition:function(){
-        wx.navigateTo({
-            url:"/pages/home/home",
+    getInputValue(e){
+        this.setData({
+            inputValue: e.detail.value
         })
+        console.log(e)
+    },
+
+    goToExhibition:function(){
+        if(this.data.inputValue !== ''){
+            if(this.data.inputValue == '0101'){
+                wx.navigateTo({
+                    url:"/pages/home/home",
+                })
+            }else{
+                wx.showToast({
+                    title: '邀请码无效',
+                    image:'../../images/icon-error.png',
+                    duration: 2000
+                })               
+            }
+        }else{
+            wx.showToast({
+                title: '\n\n请填写邀请码',
+                image:'../../images/icon-happy.png',
+                duration: 2000
+            })     
+        }
     },
 
     /**

@@ -1,2 +1,119 @@
 <!--pages/aboutIceland/aboutIceland.wxml-->
-<text>pages/aboutIceland/aboutIceland.wxml</text>
+<!-- container -->
+<view class="page-container"> 
+
+<!-- header image section -->
+<view class="exhibitors-header-container">
+    <image class="header-image" src="../../images/about-iceland-header.png" alt="" mode="aspectFit"></image>
+    <view class="exhibitors-text-container">
+        <text class="exhibitors-name">ABOUT VISIT ICELAND</text>
+        <text class="exhibitors-title">关于冰岛旅游局</text>
+        <view class="solid-white-3px"></view>
+    </view>
+    <image class="header-logo" src="../../images/Visit-Iceland-color-logo-with-white-text-right.png" mode="aspectFit"></image>
+</view>
+
+<!-- introduction section -->
+<view class="exhibitors-introduction-contaienr">
+    <text class="exhibitors-introduction-text-1">INTRODUCTION</text>
+    <text class="exhibitors-introduction-text-2">品牌介绍</text>
+    <view class="solid-balck-3px"></view>
+</view>
+
+<!-- text -1 section -->
+<view class="text-section">
+    <!-- <rich-text nodes="{{ exhibitorInfo.iceland_exhibitors_des }}"></rich-text> -->
+    <text class="exhibitor-des-text">
+        冰岛是欧洲人口密度最少的国家，纯净而又原始的自然风光更为这片土地增添了无穷的魅力，冰岛夏季温度宜人，绿茵遍野，冬季也不像想象的那般寒冷，夜空中波动起伏的北极光，色彩交融变换把夜空装扮的宛如仙境，令人日不瑕疵，陶醉其中。
+    </text>
+    <view class="solid-balck-3px-20-right"></view>
+</view>
+
+<!-- contact section -->
+<view class="exhibitors-contact-contaienr">
+    <text class="exhibitors-contact-text-1">CONTACT</text>
+    <text class="exhibitors-contact-text-2">联系方式</text>
+    <view class="solid-balck-3px"></view>
+</view>
+
+<!-- contact content section -->
+<view class="contact-container">
+
+    <view class="single-contact-container">
+        <view class="contact-content-container"> 
+            <image class="icon-contact" src="../../images/icon-email.png"  mode="aspectFit"></image>
+            <text class="contact-text">alidy@goldermatraria-atrica.com</text>
+        </view>
+        <view>
+            <image class="contact-content-arrow" src="../../images/exhibitor-arrow-right.png"  mode="aspectFit"></image>
+        </view>
+    </view>
+
+    <view class="single-contact-container">
+        <view class="contact-content-container"> 
+            <image class="icon-contact" src="../../images/icon-phone.png"  mode="aspectFit"></image>
+            <text class="contact-text">0027-12-000-1166</text>
+        </view>
+        <view>
+            <image class="contact-content-arrow" src="../../images/exhibitor-arrow-right.png"  mode="aspectFit"></image>
+        </view>
+    </view>
+    <view class="solid-balck-3px-20-right"></view>
+</view>
+
+
+<!-- download section -->
+<view class="exhibitors-introduction-contaienr">
+    <text class="exhibitors-introduction-text-1">DOWNLOAD</text>
+    <text class="exhibitors-introduction-text-2">下载资料</text>
+    <view class="solid-balck-3px"></view>
+</view>
+
+<view class="download-container">
+    <view class="single-download-container">
+        <view class="contact-content-container"> 
+            <image class="icon-download" src="../../images/icon-file.png"  mode="aspectFit"></image>
+            <text class="contact-text">冰岛旅游局旅行系列介绍资料</text>
+        </view>
+        <view>
+            <image class="contact-content-arrow" src="../../images/icon-download.png"  mode="aspectFit"></image>
+        </view>
+    </view>
+    <view class="solid-balck-3px-20"></view>
+</view>
+
+</view>
+
+<!-- socia section -->
+<view class="card-container">
+<view class="socia-card">
+<view class="wechat-container">
+    <image class="exhibitors-logo" src="../../images/VisitIceland-logo-color.png" alt="" mode="aspectFit"></image>
+    <text class="wechat-account-text">公众号ID</text>
+    <text class="wechat-account-text">visitIceland</text>
+    <text class="wechat-tip-text">长按识别二维码关注官方微信</text>
+    <image class="wechat-qr" src="../../images/iceland-qr.png" alt="" mode="aspectFit"></image>
+</view>
+
+<view class="solid-balck-1px-90"></view>
+
+<view class="socia-list-container">
+    <view class="single-socia-container">
+        <image class="socia-icon" src="../../images/icon-weibo.png" alt="" mode="aspectFit"></image>
+        <text class="socia-name">@冰岛旅游局</text>
+    </view>
+    <view class="single-socia-container">
+        <image class="socia-icon" src="../../images/icon-web.png" alt="" mode="aspectFit"></image>
+        <text class="socia-name">visiticeland.com</text>
+    </view>
+    <view class="single-socia-container">
+        <image class="socia-icon" src="../../images/icon-facebook.png" alt="" mode="aspectFit"></image>
+        <text class="socia-name">visiticeland</text>
+    </view>
+    <view class="single-socia-container">
+        <image class="socia-icon" src="../../images/icon-ins.png" alt="" mode="aspectFit"></image>
+        <text class="socia-name">visiticeland</text>
+    </view>
+</view>
+</view>
+</view>

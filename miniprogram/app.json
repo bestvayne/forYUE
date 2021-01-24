@@ -1,13 +1,15 @@
 {
   "pages": [
-    "pages/exhibitor/exhibitor",
-    "pages/exhibitor-list/exhibitor-list",
+
+
     "pages/landing/landing",
-    "pages/home/home",
+    "pages/home/home", 
+    "pages/exhibitor-list/exhibitor-list",
+    "pages/aboutIceland/aboutIceland", 
+    "pages/exhibitor/exhibitor",
+
     "pages/login-tem/login-tem",
     "pages/index/index",
-    
-    "pages/aboutIceland/aboutIceland",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",

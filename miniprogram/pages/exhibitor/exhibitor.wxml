@@ -1,2 +1,149 @@
 <!--pages/exhibitor/exhibitor.wxml-->
-<view></view>
+<!-- container -->
+<view class="page-container"> 
+
+    <!-- header image section -->
+    <view class="exhibitors-header-container">
+        <image class="header-image" src="{{ exhibitorsInfo.iceland_exhibitors_header_image }}" alt="" mode="aspectFit"></image>
+        <view class="exhibitors-text-container">
+            <text class="exhibitors-name">{{ exhibitorsInfo.iceland_exhibitors_name }}</text>
+            <text class="exhibitors-title">旅行社</text>
+            <view class="solid-white-3px"></view>
+        </view>
+    </view>
+
+    <!-- introduction section -->
+    <view class="exhibitors-introduction-contaienr">
+        <text class="exhibitors-introduction-text-1">INTRODUCTION</text>
+        <text class="exhibitors-introduction-text-2">品牌介绍</text>
+        <view class="solid-balck-3px"></view>
+    </view>
+
+    <!-- video section -->
+    <view class="exhibitors-video-container">
+        <video class="video" src="{{ exhibitorsInfo.iceland_exhibitors_video }}"></video>
+    </view>
+
+    <!-- isShow section -->
+    <view class="{{ text_isShow ? 'text-isShow-section-container':'text-isHidden-section-container' }}">
+        <!-- text -1 section -->
+        <view class="text-section">
+            <rich-text nodes="{{ exhibitorsInfo.iceland_exhibitors_des }}"></rich-text>
+        </view>
+
+        <!-- content image section -->
+        <view class="content-image-container">
+            <image class="content-image" src="{{ exhibitorsInfo.iceland_exhibitors_image_1 }}" alt="" mode="aspectFit"></image>
+        </view>
+        <view class="content-image-container">
+            <image class="content-image" src="{{ exhibitorsInfo.iceland_exhibitors_image_2 }}" alt="" mode="aspectFit"></image>
+        </view>
+
+        <!-- text -2 section -->
+        <view class="text-section">
+            <rich-text nodes="{{ exhibitorsInfo.iceland_exhibitors_des_2 }}"></rich-text>
+        </view>
+    </view>
+    <view class="isShow-up-arrow-container">
+        <image class="isShow-up-arrow" src="{{ text_isShow? '../../images/up_arrow.png':'../../images/down_arrow.png'}}" mode="aspectFit" bindtap="textIsShow"></image>
+    </view>
+    <!-- isShow section end -->
+
+    <view class="solid-balck-3px-20"></view>
+
+    <!-- contact section -->
+    <view class="exhibitors-contact-contaienr">
+        <text class="exhibitors-contact-text-1">CONTACT</text>
+        <text class="exhibitors-contact-text-2">联系方式</text>
+        <view class="solid-balck-3px"></view>
+    </view>
+
+    <!-- contact content section -->
+    <view class="contact-container">
+
+        <view class="single-contact-container">
+            <view class="contact-content-container"> 
+                <image class="icon-contact" src="../../images/icon-email.png"  mode="aspectFit"></image>
+                <text class="contact-text">{{ exhibitorsInfo.iceland_exhibitors_email }}</text>
+            </view>
+            <view>
+                <image class="contact-content-arrow" src="../../images/exhibitor-arrow-right.png"  mode="aspectFit"></image>
+            </view>
+        </view>
+
+        <view class="single-contact-container">
+            <view class="contact-content-container"> 
+                <image class="icon-contact" src="../../images/icon-phone.png"  mode="aspectFit"></image>
+                <text class="contact-text">+{{ exhibitorsInfo.iceland_exhibitors_phone }}</text>
+            </view>
+            <view>
+                <image class="contact-content-arrow" src="../../images/exhibitor-arrow-right.png"  mode="aspectFit"></image>
+            </view>
+        </view>
+        <view class="solid-balck-3px-20-right"></view>
+    </view>
+    
+
+    <!-- download section -->
+    <view class="exhibitors-introduction-contaienr">
+        <text class="exhibitors-introduction-text-1">DOWNLOAD</text>
+        <text class="exhibitors-introduction-text-2">下载资料</text>
+        <view class="solid-balck-3px"></view>
+    </view>
+
+    <view class="download-container">
+        <view class="single-download-container">
+            <view class="contact-content-container"> 
+                <image class="icon-download" src="../../images/icon-file.png"  mode="aspectFit"></image>
+                <text class="contact-text">{{ exhibitorsInfo.iceland_exhibitors_download_name }}</text>
+            </view>
+            <view>
+                <image class="contact-content-arrow" src="../../images/icon-download.png"  mode="aspectFit"></image>
+            </view>
+        </view>
+        <view class="solid-balck-3px-20"></view>
+    </view>
+
+</view>
+
+<!-- socia section -->
+<view class="card-container">
+    <view class="socia-card">
+    <view class="wechat-container">
+        <image class="exhibitors-logo" src="{{ exhibitorsInfo.iceland_exhibitors_logo }}" alt="" mode="aspectFit"></image>
+        <text class="wechat-account-text">公众号ID</text>
+        <text class="wechat-account-text">{{ exhibitorsInfo.iceland_exhibitors_wechat }}</text>
+        <text class="wechat-tip-text">长按识别二维码关注官方微信</text>
+        <image class="wechat-qr" src="{{ exhibitorsInfo.iceland_exhibitors_wechat_image }}" alt="" mode="aspectFit"></image>
+    </view>
+
+    <view class="solid-balck-1px-90"></view>
+
+    <view class="socia-list-container">
+        <view class="single-socia-container">
+            <image class="socia-icon" src="../../images/icon-weibo.png" alt="" mode="aspectFit"></image>
+            <text class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_weibo }}</text>
+        </view>
+        <view class="single-socia-container">
+            <image class="socia-icon" src="../../images/icon-web.png" alt="" mode="aspectFit"></image>
+            <text class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_web }}</text>
+        </view>
+        <view class="single-socia-container">
+            <image class="socia-icon" src="../../images/icon-facebook.png" alt="" mode="aspectFit"></image>
+            <text class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_facebook }}</text>
+        </view>
+        <view class="single-socia-container">
+            <image class="socia-icon" src="../../images/icon-ins.png" alt="" mode="aspectFit"></image>
+            <text class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_ins }}</text>
+        </view>
+    </view>
+    </view>
+</view>
+
+<!-- meeting button section -->
+<view class="meeting-btn">
+    <view>
+        <text class="meeting-text">预约会议</text>
+        <image class="meeting-icon" src="../../images/meeting-arrow.png" mode="aspectFit"></image>
+    </view>
+</view>

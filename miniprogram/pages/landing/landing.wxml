@@ -1,9 +1,9 @@
 <!--pages/landing/landing.wxml-->
 <view class="full-screen landing-page-container">
-    <image src="../../images/VisitIceland-logo-color.png" alt="Iceland Logo" mode="aspectFit" class="landing-page-logo"></image>
+    <image src="../../images/Visit-Iceland-color-logo-with-white-text-right.png" alt="Iceland Logo" mode="aspectFit" class="landing-page-logo"></image>
     <text class="landing-page-text">冰岛，世界尽头的仙境</text>
     <view>
-        <input class="landing-page-input" type="input" placeholder="请输入邀请码..." placeholder-class="landing-page-input-placeholder"/>
+        <input class="landing-page-input" type="input" placeholder="请输入邀请码..." placeholder-class="landing-page-input-placeholder" bindinput="getInputValue" />
         <button class="landing-page-button" bindtap="goToExhibition">参加线上展会  →</button>
     </view>
 </view>

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/Iceland-home-bg.jpg?sign=a776ffd81e47990a02c50640aa104747&t=1610994863");
+    background-image: url("https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/visitIceland-header.jpg?sign=5998eeab2667f6404f5517da3fbfea16&t=1611482224");
     background-size: 100% 450rpx;
     background-repeat: no-repeat;
 }
@@ -12,9 +12,7 @@
     width: 100%;
     height: 400rpx;
     margin-top: 40rpx;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    position: relative;
 }
 
 .logo{
@@ -25,23 +23,31 @@
 }
 
 .text{
-    font-size: 32rpx;
+    align-self: center;
+    font-size: 48rpx;
+    font-weight: 600;
     color: #FFFFFF;
-    padding: 30rpx 40rpx;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.15);
+    letter-spacing: 1.2rpx;
+    line-height: 60rpx;
+    width: 100%;
+    text-align: center;
+    position: absolute;
+	left: 50%;
+	top:50%; 
+    transform:translate(-50%,-50%);
 }
 
 .nav-container{
     width: 90%;
     height: 150rpx;
-    padding: 30rpx;
+    padding: 30rpx 0;
 }
 
 .nav-icon-list{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 95%;
 }
 
 .icon-container{
@@ -50,8 +56,6 @@
 }
 
 .nav-style{
-    width: 150rpx;
-    height: 150rpx;
     display: flex;
     flex-direction: column;
     align-items: center;
