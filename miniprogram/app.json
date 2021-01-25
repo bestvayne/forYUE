@@ -1,10 +1,10 @@
 {
   "pages": [
 
+    "pages/exhibitor-list/exhibitor-list",
 
     "pages/landing/landing",
     "pages/home/home", 
-    "pages/exhibitor-list/exhibitor-list",
     "pages/aboutIceland/aboutIceland", 
     "pages/exhibitor/exhibitor",
 

@@ -1,4 +1,6 @@
 // pages/landing/landing.js
+const invitationCode = ['0101','0202']
+
 Page({
 
     /**
@@ -24,7 +26,22 @@ Page({
 
     goToExhibition:function(){
         if(this.data.inputValue !== ''){
-            if(this.data.inputValue == '0101'){
+
+            /*
+            |--------------------------------------------------------------------------
+            |   @invitationCode	            Array
+            |   @this.data.inputValue       Object
+            |   @verifyInvitationCode       Object
+            |--------------------------------------------------------------------------
+            |	1.Get the input entered code -> this.data.inputValue
+            |   2.When user click the go to exhibitors button,verify this code
+            |   3.According to this code true/false,give return
+            | 
+            */            
+
+            let verifyInvitationCode = invitationCode.indexOf(String(this.data.inputValue))
+
+            if(verifyInvitationCode !== -1){
                 wx.navigateTo({
                     url:"/pages/home/home",
                 })
@@ -37,7 +54,7 @@ Page({
             }
         }else{
             wx.showToast({
-                title: '\n\n请填写邀请码',
+                title: '请填写邀请码',
                 image:'../../images/icon-happy.png',
                 duration: 2000
             })     
