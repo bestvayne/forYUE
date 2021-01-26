@@ -43,16 +43,16 @@
     
     <view class="card-content">
             <navigator url="/pages/aboutIceland/aboutIceland" class="card">
-                <image class="card-bg" src="../../images/home-about-Iceland.png"></image>
+                <image class="card-bg" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/home-about-Iceland.png?sign=d0aae75a6d5c786be2b36b14ea6dec25&t=1611630334"></image>
             </navigator>
             <navigator class="card">
-                <image class="card-bg" src="../../images/home-schedule.png"></image>
+                <image class="card-bg" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/home-schedule.png?sign=479a175c3ff59e3fe96ca5a43ebe1c43&t=1611630349"></image>
             </navigator>
             <navigator url="/pages/exhibitor-list/exhibitor-list" class="card">
-                <image class="card-bg" src="../../images/home-about-exhibitors.png"></image>
+                <image class="card-bg" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/home-about-exhibitors.png?sign=c41f0700909a635cb08d63a33b849ee3&t=1611630362"></image>
             </navigator>
             <navigator class="card">
-                <image class="card-bg" src="../../images/home-book-meeting.png"></image>
+                <image class="card-bg" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/home-book-meeting.png?sign=90249d1bd8379c25bac3f2e5f5251684&t=1611630373"></image>
             </navigator>
     </view>
 </view>
