@@ -23,6 +23,13 @@ Page({
 		})
 	},
 
+	// 打电话
+	callPhone: function () {
+        let that = this
+            wx.makePhoneCall({
+              phoneNumber: this.data.exhibitorsInfo.iceland_exhibitors_phone//需要拨打的电话号码
+        })
+    },
 
 	/**
 	 * 生命周期函数--监听页面加载

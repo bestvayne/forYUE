@@ -52,7 +52,7 @@ page{
 .landing-page-input::after{
     color: rgba(255,255,255,0.70);
     opacity: 0.8;
-    font-size: 40rpx;
+    font-size: 36rpx;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -62,7 +62,7 @@ page{
 .landing-page-input-placeholder{
     color: rgba(255,255,255,0.70);
     opacity: 0.8;
-    font-size: 40rpx;
+    font-size: 36rpx;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -75,7 +75,7 @@ page{
     background: rgba(255,255,255,0.95);
     border-radius: 0;
     border: 1px solid #D0D9D7;
-    font-size: 40rpx;
+    font-size: 36rpx;
     font-weight: 600;
     color: #373D40;
     letter-spacing: 0;

@@ -71,7 +71,7 @@
             </view>
         </view>
 
-        <view class="single-contact-container">
+        <view class="single-contact-container" bindtap="callPhone">
             <view class="contact-content-container"> 
                 <image class="icon-contact" src="../../images/icon-phone.png"  mode="aspectFit"></image>
                 <text class="contact-text">+{{ exhibitorsInfo.iceland_exhibitors_phone }}</text>

@@ -42,7 +42,7 @@
     <view class="single-contact-container">
         <view class="contact-content-container"> 
             <image class="icon-contact" src="../../images/icon-email.png"  mode="aspectFit"></image>
-            <text class="contact-text">alidy@goldermatraria-atrica.com</text>
+            <text class="contact-text">Thorleifur@islandsstofa.is</text>
         </view>
         <view>
             <image class="contact-content-arrow" src="../../images/exhibitor-arrow-right.png"  mode="aspectFit"></image>
@@ -52,10 +52,10 @@
     <view class="single-contact-container">
         <view class="contact-content-container"> 
             <image class="icon-contact" src="../../images/icon-phone.png"  mode="aspectFit"></image>
-            <text class="contact-text">0027-12-000-1166</text>
+            <text class="contact-text" bindtap="callPhone"> (+354) 824 4384</text>
         </view>
         <view>
-            <image class="contact-content-arrow" src="../../images/exhibitor-arrow-right.png"  mode="aspectFit"></image>
+            <image class="contact-content-arrow" src="../../images/exhibitor-arrow-right.png"  mode="aspectFit" bindtap="callPhone"></image>
         </view>
     </view>
     <view class="solid-balck-3px-20-right"></view>
