@@ -29,6 +29,14 @@
     padding: 5px 0;
 }
 
+.header-logo{
+    position: absolute;
+    width: 200rpx;
+    height: 50rpx;
+    bottom: 20rpx;
+    right: 20rpx;
+}
+
 .exhitbitor-list-container{
     width: 100%;
     height: 340rpx;

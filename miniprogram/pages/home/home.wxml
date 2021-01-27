@@ -11,7 +11,7 @@
             <view class="icon-container">
                 <navigator url="/pages/aboutIceland/aboutIceland" class="nav-style">
                     <image class="icon" src="../../images/about.png" alt="Promote Iceland About Us"></image>
-                    <text class="icon-text">关于我们</text>
+                    <text class="icon-text">关于冰岛</text>
                 </navigator>
             </view>
             <view class="icon-container">
@@ -43,7 +43,7 @@
     
     <view class="card-content">
             <navigator url="/pages/aboutIceland/aboutIceland" class="card">
-                <image class="card-bg" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/home-about-Iceland.png?sign=d0aae75a6d5c786be2b36b14ea6dec25&t=1611630334"></image>
+                <image class="card-bg" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/home-about-Iceland.png?sign=ddcb7730e0eea71dd69bb11b129dbb4e&t=1611654032"></image>
             </navigator>
             <navigator class="card">
                 <image class="card-bg" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/home-schedule.png?sign=479a175c3ff59e3fe96ca5a43ebe1c43&t=1611630349"></image>

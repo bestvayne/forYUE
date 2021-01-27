@@ -6,8 +6,8 @@
 <view class="exhibitors-header-container">
     <image class="header-image" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/about-Iceland-header%2011.04.21.png?sign=03fe46b8405c63357d01e62a5ef48125&t=1611630915" alt="" mode="aspectFit"></image>
     <view class="exhibitors-text-container">
-        <text class="exhibitors-name">ABOUT VISIT ICELAND</text>
-        <text class="exhibitors-title">关于冰岛旅游局</text>
+        <text class="exhibitors-name">ABOUT ICELAND</text>
+        <text class="exhibitors-title">关于冰岛</text>
         <view class="solid-white-3px"></view>
     </view>
     <image class="header-logo" src="../../images/Visit-Iceland-color-logo-with-white-text-right.png" mode="aspectFit"></image>
@@ -16,13 +16,19 @@
 <!-- introduction section -->
 <view class="exhibitors-introduction-contaienr">
     <text class="exhibitors-introduction-text-1">INTRODUCTION</text>
-    <text class="exhibitors-introduction-text-2">品牌介绍</text>
+    <text class="exhibitors-introduction-text-2">关于冰岛</text>
     <view class="solid-balck-3px"></view>
 </view>
 
 <!-- text -1 section -->
 <view class="text-section">
     <!-- <rich-text nodes="{{ exhibitorInfo.iceland_exhibitors_des }}"></rich-text> -->
+    <text class="exhibitor-des-text">
+        冰岛是一个拥有极端地质对比的国家。它被称为“冰与火”之乡，这里拥有一些欧洲最大的冰川，也拥有一些世界上最活跃的火山。
+    </text>
+    <text class="exhibitor-des-text">
+        冰岛也被称为“光明与黑暗”的国度，在这里夏季有着漫长的近24小时的日照， 然而冬季却仅几小时的日照。
+    </text>
     <text class="exhibitor-des-text">
         冰岛是欧洲人口密度最少的国家，纯净而又原始的自然风光更为这片土地增添了无穷的魅力，冰岛夏季温度宜人，绿茵遍野，冬季也不像想象的那般寒冷，夜空中波动起伏的北极光，色彩交融变换把夜空装扮的宛如仙境，令人日不瑕疵，陶醉其中。
     </text>

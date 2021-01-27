@@ -4,6 +4,7 @@
     <view class="full-screen container">
         <text class="text">EXHIBITOR</text>
         <text class="text">参展商</text>
+        <image class="header-logo" src="../../images/Visit-Iceland-color-logo-with-white-text-right.png" mode="aspectFit"></image>
     </view>
 
     <block wx:for="{{allExhibitorsInfo}}" wx:key="_id" wx:for-index="_id" wx:for-item="exhibitors">
