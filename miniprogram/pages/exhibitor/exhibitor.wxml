@@ -113,7 +113,6 @@
         <image class="exhibitors-logo" src="{{ exhibitorsInfo.iceland_exhibitors_logo }}" alt="" mode="aspectFit"></image>
         <text class="wechat-account-text">公众号ID</text>
         <text class="wechat-account-text">{{ exhibitorsInfo.iceland_exhibitors_wechat }}</text>
-        <text class="wechat-tip-text">长按识别二维码关注官方微信</text>
         <image class="wechat-qr" src="{{ exhibitorsInfo.iceland_exhibitors_wechat_image }}" alt="" mode="aspectFit"></image>
     </view>
 

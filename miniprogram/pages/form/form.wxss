@@ -1,0 +1,60 @@
+/* pages/form/form.wxss */
+.container{
+    background-color:#F1F1F1;
+
+}
+
+.header-text{
+    font-size: 28rpx;
+    color: #78A4BF;
+    letter-spacing: 0.3px;
+    line-height: 27px;
+    margin: 40rpx;
+}
+
+.form-input{
+    background: #FFFFFF;
+    height: 100rpx;
+    border: 1px solid #E0E0E0;
+    font-size: 28rpx;
+    color: #979DA6;
+    letter-spacing: 0.35px;
+    margin: 20rpx 30rpx;
+    padding-left: 20rpx;
+}
+
+.form-input-placeholder{
+    font-size: 28rpx;
+    color: #979DA6;
+    letter-spacing: 0.35px;
+}
+
+.form-input::after{
+    font-size: 28rpx;
+    color: red;
+    letter-spacing: 0.35px;
+    padding-left: 20rpx;
+}
+
+.picker{
+    font-size: 28rpx;
+    color: #979DA6;
+    letter-spacing: 0.35px;
+    margin: 20rpx 30rpx;
+    height: 100rpx;
+    background: #FFFFFF;
+    border: 1px solid #E0E0E0;
+    display: flex;
+    padding-left: 20rpx;
+    align-items: center;
+}
+
+.form-btn{
+    background: #78A4BF;
+    height: 100rpx;
+    border: 1px solid #D0D9D7;
+    font-size: 36rpx;
+    color: #FFFFFF;
+    letter-spacing: 1px;
+    margin: 40rpx 30rpx;
+}

@@ -97,7 +97,6 @@
     <image class="exhibitors-logo" src="../../images/VisitIceland-logo-color.png" alt="" mode="aspectFit"></image>
     <text class="wechat-account-text">公众号ID</text>
     <text class="wechat-account-text">visitIceland</text>
-    <text class="wechat-tip-text">长按识别二维码关注官方微信</text>
     <image class="wechat-qr" src="../../images/iceland-qr.png" alt="" mode="aspectFit"></image>
 </view>
 

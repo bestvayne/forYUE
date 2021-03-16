@@ -84,3 +84,25 @@ page{
     justify-content: center;
     text-align: center;
 }
+
+.go-to-form-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.go-to-form{
+    text-align: center;
+    font-size: 28rpx;
+    color: #FFFFFF;
+    letter-spacing: 0.3px;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.50);
+    margin-top: 40rpx;
+}
+
+.diving-line{
+    margin-top: 10rpx;
+    border-bottom: 1px solid #FFFFFF;
+    width: 65%;
+}

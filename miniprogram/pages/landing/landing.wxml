@@ -5,5 +5,10 @@
     <view>
         <input class="landing-page-input" type="input" placeholder="请输入邀请码..." placeholder-class="landing-page-input-placeholder" bindinput="getInputValue" />
         <button class="landing-page-button" bindtap="goToExhibition">参加线上展会  →</button>
+
+        <view class="go-to-form-container" bindtap="goToForm">
+            <view class="go-to-form">我没有邀请码，去申请</view>
+            <view class="diving-line"></view>
+        </view>
     </view>
 </view>
