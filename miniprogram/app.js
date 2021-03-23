@@ -12,16 +12,20 @@ App({
         // env: 'my-env-id',
         env: 'jprail-prod-23b737',
         traceUser: true,
-        
+
       })
     }
 
     const db = wx.cloud.database({
-			env: 'jprail-prod-23b737',
-		})
+      env: 'jprail-prod-23b737',
+    })
 
     this.globalData = {
-      db: db
+      db: db,
+      isLogin: false,
+      openId: '',
+      locationAuthGlobal: false,
     }
+
   }
 })

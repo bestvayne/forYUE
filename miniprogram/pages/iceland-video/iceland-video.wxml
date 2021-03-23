@@ -1,0 +1,31 @@
+<!--pages/iceland-video/iceland-video.wxml-->
+<view class="exhibitors-video-container" style="height:{{ windowHeight/3 }}px">
+    <video class="video" src="cloud://jprail-prod-23b737.6a70-jprail-prod-23b737-1257787091/cloudbase-cms/upload/2021-01-22/u1g4be5j3wsu3qnulk3wv6akj7yu3d25_.mp4"></video>
+</view>
+
+<view class="chat-container" style="height:{{ (windowHeight - windowHeight/3) }}px">
+
+    <view class="other-user-chat-container">
+       <view class="user-info-container">
+            <image class="user-avatar" src="https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaELRLYcNGe5F5TRaucKOBeDL9y8Hhr0RDv17GTkk5X59ssUHDYboH6IwuQHG2icaAjBcuDv7UEeNJVQ/132" mode="aspectFit"></image>
+
+            <text class="user-name">{{userInfo.nickName}}</text>
+       </view>
+       <view class="chat-message-container">
+        欢迎进入直播间：
+        1、本次直播为视频直播，请确保手机
+        为非静音状态；如遇视频卡顿，请尝
+        试刷新页面。
+        2、直播结束后，您可以随时回看全
+        部内容。
+       </view>
+    </view>
+
+
+    <view class="send-message-container">
+        <input placeholder="请输入邀请码..." placeholder-class="iceland-video-input-placeholder" type="input"/>
+        <button class="weui-btn login_btn" type="primary" size="mini" wx:if="{{ !CanIUse }}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">发送</button>
+    </view>
+</view>
+
+

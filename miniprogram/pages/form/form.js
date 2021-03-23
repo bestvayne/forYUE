@@ -110,6 +110,19 @@ Page({
 
     },
 
+    task1:function (){
+        wx.showToast({
+            title: '提交成功',
+            image: '../../images/icon-happy.png',
+            duration: 2000
+        })
+    },
+    task2:function (){
+        wx.navigateTo({
+            url: "/pages/home/home",
+        })
+    },
+
     formSubmit: function () {
         const _that = this
         db.collection('iceland_visitor').add({
@@ -125,14 +138,11 @@ Page({
             },
             success: function (res) {
                 if (res._id) {
-                    wx.showToast({
-                        title: '提交成功',
-                        image: '../../images/icon-happy.png',
-                        duration: 2000
-                    })
-                    wx.navigateTo({
-                        url: "/pages/form/form",
-                    })
+                    async function allTasks(){
+                        await _that.task1(); 
+                        await _that.task2();                   
+                    }
+                    allTasks();
                 }
             }
         })
