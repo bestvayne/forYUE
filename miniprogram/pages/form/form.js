@@ -117,11 +117,11 @@ Page({
             duration: 2000
         })
     },
-    task2:function (){
-        wx.navigateTo({
-            url: "/pages/home/home",
-        })
-    },
+    // task2:function (){
+    //     wx.navigateTo({
+    //         url: "/pages/landing/landing",
+    //     })
+    // },
 
     formSubmit: function () {
         const _that = this
@@ -140,7 +140,7 @@ Page({
                 if (res._id) {
                     async function allTasks(){
                         await _that.task1(); 
-                        await _that.task2();                   
+                        // await _that.task2();                   
                     }
                     allTasks();
                 }

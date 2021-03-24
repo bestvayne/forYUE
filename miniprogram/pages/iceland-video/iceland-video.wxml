@@ -12,14 +12,12 @@
             <text class="user-name">{{userInfo.nickName}}</text>
        </view>
        <view class="chat-message-container">
-        欢迎进入直播间：
-        1、本次直播为视频直播，请确保手机
-        为非静音状态；如遇视频卡顿，请尝
-        试刷新页面。
-        2、直播结束后，您可以随时回看全
-        部内容。
+        欢迎来到冰岛
+        1、请确保手机为非静音状态；如遇视频卡顿，请尝试刷新页面。
+        2、登录后即可留言。
        </view>
     </view>
+    
 
 
     <view class="send-message-container">
