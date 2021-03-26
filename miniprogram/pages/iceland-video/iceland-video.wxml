@@ -5,24 +5,43 @@
 
 <view class="chat-container" style="height:{{ (windowHeight - windowHeight/3) }}px">
 
+    <!-- other user chat message -->
     <view class="other-user-chat-container">
-       <view class="user-info-container">
-            <image class="user-avatar" src="https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaELRLYcNGe5F5TRaucKOBeDL9y8Hhr0RDv17GTkk5X59ssUHDYboH6IwuQHG2icaAjBcuDv7UEeNJVQ/132" mode="aspectFit"></image>
+       <view class="other-user-info-container">
+            <image class="other-user-avatar" src="https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaELRLYcNGe5F5TRaucKOBeDL9y8Hhr0RDv17GTkk5X59ssUHDYboH6IwuQHG2icaAjBcuDv7UEeNJVQ/132" mode="aspectFit"></image>
 
-            <text class="user-name">{{userInfo.nickName}}</text>
+            <text class="other-user-name">{{userInfo.nickName}}</text>
        </view>
-       <view class="chat-message-container">
+       <view class="other-chat-message-container">
         欢迎来到冰岛
         1、请确保手机为非静音状态；如遇视频卡顿，请尝试刷新页面。
         2、登录后即可留言。
        </view>
     </view>
-    
+
+    <!-- usre chat message -->
+    <view class="user-chat-container">
+        <view class="user-info-container">
+            <image class="user-avatar" src="https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaELRLYcNGe5F5TRaucKOBeDL9y8Hhr0RDv17GTkk5X59ssUHDYboH6IwuQHG2icaAjBcuDv7UEeNJVQ/132" mode="aspectFit"></image>
+
+            <text class="user-name">{{userInfo.nickName}}</text>
+        </view>
+        <view class="chat-message-container">
+            好棒！
+        </view>
+    </view>
 
 
-    <view class="send-message-container">
-        <input placeholder="请输入邀请码..." placeholder-class="iceland-video-input-placeholder" type="input"/>
-        <button class="weui-btn login_btn" type="primary" size="mini" wx:if="{{ !CanIUse }}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">发送</button>
+    <!-- send message section -->
+
+    <view wx:if="{{!userInfo}}" class="send-message-container">
+        <input class="iceland-video-input" placeholder="登录后即可发送消息" placeholder-class="iceland-video-input-placeholder" type="input"/>
+        <button class="send-message-btn" type="primary" size="big" wx:if="{{ !CanIUse }}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">登录</button>
+    </view>
+
+    <view wx:else class="send-message-container">
+        <input class="iceland-video-input" placeholder="输入讨论内容或提问..." placeholder-class="iceland-video-input-placeholder" type="input"/>
+        <button class="send-message-btn" type="primary" size="big" wx:if="{{ !CanIUse }}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">发送</button>
     </view>
 </view>
 

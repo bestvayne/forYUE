@@ -7,7 +7,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-
         visitorType: ["请选择贵司所属的参会类型", "采购商", "服务商", "媒体", "业内人员", "其他"],
         visitorTypeIndex: 0,
         visitorTypeArray: [{

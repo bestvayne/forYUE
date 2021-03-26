@@ -7,8 +7,7 @@ Page({
      * 页面的初始数据
      */
     data: {
-        avatarUrl: '/images/user-unlogin.png',
-        userInfo: {},
+        userInfo: "",
         isLogin: false,
         logged: false,
         windowHeight: '',

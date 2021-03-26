@@ -11,7 +11,46 @@
     width: 100%;
     height: 100%;
     background-color: #F4F4F4;
-    padding-top: 40rpx;
+}
+
+.other-user-chat-container{
+    margin-top: 40rpx;
+}
+
+.other-user-info-container{
+    padding: 0 30rpx;
+    display:flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.other-user-avatar{
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+}
+
+.other-user-name{
+    font-size: 26rpx;
+    color: #9B9B9B;
+    letter-spacing: 0.13px;
+    padding-left: 20rpx;
+}
+.other-chat-message-container{
+    width: auto;
+    max-width: 60%;
+    display: inline-block;
+    font-size: 28rpx;
+    background-color: #FFFFFF;
+    color: #4A4A4A;
+    letter-spacing: 0.13px;
+    line-height: 23px;
+    margin-left: 130rpx;
+    padding: 20rpx 30rpx;
+}
+
+.user-chat-container{
+    margin-top: 40rpx;
 }
 
 .user-info-container{
@@ -19,6 +58,7 @@
     display:flex;
     justify-items: center;
     align-items: center;
+    flex-direction: row-reverse;
 }
 
 .user-avatar{
@@ -31,8 +71,9 @@
     font-size: 26rpx;
     color: #9B9B9B;
     letter-spacing: 0.13px;
-    padding-left: 20rpx;
+    padding-right: 20rpx;
 }
+
 .chat-message-container{
     width: auto;
     max-width: 60%;
@@ -42,29 +83,48 @@
     color: #4A4A4A;
     letter-spacing: 0.13px;
     line-height: 23px;
-    margin-left: 130rpx;
-    padding: 30rpx 40rpx;
-}
-
-.user-chat-container{
-    max-width: 80%;
-    background-color:#FFFFFF;
-    font-size: 28rpx;
-    color: #4A4A4A;
-    letter-spacing: 0.13px;
-    line-height: 23px;
+    margin-right: 130rpx;
+    padding: 20rpx 30rpx;
+    float: right;
 }
 
 .send-message-container{
-    width: 100vw;
+    width: 100%;
+    height: 120rpx;
+    background: #ffffff;
+    font-size: 32rpx;
+    color: #FFFFFF;
+    letter-spacing: 0.5px;
+    position:fixed; 
+    bottom:0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.iceland-video-input{
+    width: 70%;
+    height: 80rpx;
+    color: #D2D2D2;
+    background-color: #F4F4F4;
+    opacity: 0.8;
+    font-size: 28rpx;
+    letter-spacing: 0.6rpx;
+    padding-left: 10rpx;
+    margin: 10rpx 20rpx;
 }
 
 .iceland-video-input-placeholder{
-    color: rgba(255,255,255,0.70);
+    color: #807d7d;
+    background-color: #F4F4F4;
     opacity: 0.8;
-    font-size: 36rpx;
+    font-size: 28rpx;
+    letter-spacing: 0.6rpx;
+    padding-left: 10rpx;
+}
+
+.send-message-btn{
+    font-size: 30rpx;
     display: flex;
-    align-items: center;
     justify-content: center;
-    text-align: center;
+    align-items: center;
 }
