@@ -21,7 +21,7 @@
                 </navigator>
             </view>
             <view class="icon-container">
-                <navigator url="" class="nav-style">
+                <navigator url="/pages/iceland-video/iceland-video" class="nav-style">
                     <image class="icon" src="../../images/icon-live.png" alt="Promote Iceland Schedule"></image>
                     <text class="icon-text">视频介绍</text>
                 </navigator>

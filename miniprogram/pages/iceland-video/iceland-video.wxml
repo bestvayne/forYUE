@@ -1,48 +1,91 @@
 <!--pages/iceland-video/iceland-video.wxml-->
 <view class="exhibitors-video-container" style="height:{{ windowHeight/3 }}px">
-    <video class="video" src="cloud://jprail-prod-23b737.6a70-jprail-prod-23b737-1257787091/cloudbase-cms/upload/2021-01-22/u1g4be5j3wsu3qnulk3wv6akj7yu3d25_.mp4"></video>
+    <video class="video"
+        src="cloud://jprail-prod-23b737.6a70-jprail-prod-23b737-1257787091/cloudbase-cms/upload/2021-01-22/u1g4be5j3wsu3qnulk3wv6akj7yu3d25_.mp4"></video>
 </view>
 
 <view class="chat-container" style="height:{{ (windowHeight - windowHeight/3) }}px">
 
-    <!-- other user chat message -->
-    <view class="other-user-chat-container">
-       <view class="other-user-info-container">
-            <image class="other-user-avatar" src="https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaELRLYcNGe5F5TRaucKOBeDL9y8Hhr0RDv17GTkk5X59ssUHDYboH6IwuQHG2icaAjBcuDv7UEeNJVQ/132" mode="aspectFit"></image>
-
-            <text class="other-user-name">{{userInfo.nickName}}</text>
-       </view>
-       <view class="other-chat-message-container">
-        欢迎来到冰岛
-        1、请确保手机为非静音状态；如遇视频卡顿，请尝试刷新页面。
-        2、登录后即可留言。
-       </view>
+    <!-- if user not login -->
+    <view wx:if="{{!userOpenId}}" class="not-login-container">
+        <button class="login-btn" type="primary" size="big" wx:if="{{ !CanIUse }}" open-type="getUserInfo"
+            bindgetuserinfo="onGetUserInfo">登录</button>
+        <text class="login-tip-text">登录即可查看留言</text>
     </view>
 
-    <!-- usre chat message -->
-    <view class="user-chat-container">
-        <view class="user-info-container">
-            <image class="user-avatar" src="https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaELRLYcNGe5F5TRaucKOBeDL9y8Hhr0RDv17GTkk5X59ssUHDYboH6IwuQHG2icaAjBcuDv7UEeNJVQ/132" mode="aspectFit"></image>
+    <!-- user is login -->
+    <view wx:else>
+        
+        <!-- other user chat message -->
+        <!-- 
+            根据当前页面的 openId 判断是否在页面右侧显示 chat message container
+         -->
+        <view 
+            wx:for="{{chatMessageList}}" 
+            wx:key="_id" 
+            wx:for-item="chatMessageItem" 
+            class="{{ chatMessageItem._id == chatMessageList[chatMessageList.length-1]._id?'other-user-chat-container-mg-b-140rpx':'other-user-chat-container' }} {{ chatMessageItem.useropenid == userOpenId?'user-chat-container':'other-user-chat-container' }}">
+            <!-- user avatar and user name container -->
+            <view 
+                class="{{ chatMessageItem.useropenid == userOpenId?'user-info-container':'other-user-info-container' }}">
 
-            <text class="user-name">{{userInfo.nickName}}</text>
+                <!-- user avatar -->
+                <image 
+                    class="{{ chatMessageItem.useropenid == userOpenId?'user-avatar':'other-user-avatar '}}"
+                    src="{{chatMessageItem.useravatar}}"
+                    mode="aspectFit"></image>
+
+                <!-- user name -->
+                <view 
+                    class="{{ chatMessageItem.useropenid == userOpenId?'user-name':'other-user-name'}}">
+                        {{chatMessageItem.username}}
+                </view>
+            </view>
+
+            <!-- chat message -->
+            <view 
+                class="{{ chatMessageItem.useropenid == userOpenId?'chat-message-container':'other-chat-message-container'}}">
+                    {{chatMessageItem.chat_message}}
+            </view>
         </view>
-        <view class="chat-message-container">
-            好棒！
+
+        <!-- usre chat message -->
+        <!-- <view class="user-chat-container">
+            <view class="user-info-container">
+                <image class="user-avatar"
+                    src="https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaELRLYcNGe5F5TRaucKOBeDL9y8Hhr0RDv17GTkk5X59ssUHDYboH6IwuQHG2icaAjBcuDv7UEeNJVQ/132"
+                    mode="aspectFit"></image>
+
+                <text class="user-name">{{userInfo.nickName}}</text>
+            </view>
+            <view class="chat-message-container">
+                好棒！
+            </view>
+        </view> -->
+
+        <!-- send message section -->
+
+        <!-- if user not login -->
+        <!-- <view wx:if="{{!userInfo}}" class="send-message-container">
+            <input class="iceland-video-input" placeholder="登录后即可发送消息" placeholder-class="iceland-video-input-placeholder" type="input"/>
+            <button class="send-message-btn" type="primary" size="big" wx:if="{{ !CanIUse }}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">登录</button>
+        </view> -->
+
+        <!-- user is login -->
+        <view class="send-message-container">
+            <input 
+                class="iceland-video-input" 
+                bindinput="getReadyMessage" 
+                placeholder="输入讨论内容或提问..."
+                placeholder-class="iceland-video-input-placeholder" 
+                type="input"
+                value="{{readyMessage}}" />
+            <button 
+                class="send-message-btn" 
+                type="primary" 
+                size="big"
+                bindtap="sendMessage">发送</button>
         </view>
     </view>
 
-
-    <!-- send message section -->
-
-    <view wx:if="{{!userInfo}}" class="send-message-container">
-        <input class="iceland-video-input" placeholder="登录后即可发送消息" placeholder-class="iceland-video-input-placeholder" type="input"/>
-        <button class="send-message-btn" type="primary" size="big" wx:if="{{ !CanIUse }}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">登录</button>
-    </view>
-
-    <view wx:else class="send-message-container">
-        <input class="iceland-video-input" placeholder="输入讨论内容或提问..." placeholder-class="iceland-video-input-placeholder" type="input"/>
-        <button class="send-message-btn" type="primary" size="big" wx:if="{{ !CanIUse }}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">发送</button>
-    </view>
 </view>
-
-

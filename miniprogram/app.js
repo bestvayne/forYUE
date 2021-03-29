@@ -23,7 +23,7 @@ App({
     this.globalData = {
       db: db,
       isLogin: false,
-      openId: '',
+      userOpenId: '',
       locationAuthGlobal: false,
     }
 
