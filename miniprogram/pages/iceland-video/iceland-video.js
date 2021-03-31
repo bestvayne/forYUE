@@ -14,6 +14,18 @@ Page({
         canIUse: wx.canIUse('button.open-type.getUserInfo')
     },
 
+    sendMail(){
+        wx.cloud.callFunction({
+            name:"sendEmail",
+            success(res){
+                console.info(res)
+            },
+            fail(res){
+                console.info(res)
+            }
+        })
+    },
+
     onLoad: function (options) {
         if(app.globalData.userOpenId){
             this.setData({

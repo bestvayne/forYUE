@@ -4,6 +4,8 @@
         src="cloud://jprail-prod-23b737.6a70-jprail-prod-23b737-1257787091/cloudbase-cms/upload/2021-01-22/u1g4be5j3wsu3qnulk3wv6akj7yu3d25_.mp4"></video>
 </view>
 
+<button bindtap="sendMail">发邮件</button>
+
 <view class="chat-container" style="height:{{ (windowHeight - windowHeight/3) }}px">
 
     <!-- if user not login -->
