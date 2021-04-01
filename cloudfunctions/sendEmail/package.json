@@ -9,6 +9,7 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "ical-generator": "^1.15.4",
         "nodemailer": "^6.5.0",
         "wx-server-sdk": "~2.4.0"
     }

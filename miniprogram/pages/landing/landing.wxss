@@ -14,7 +14,7 @@ page{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background-image: url("https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/landing-bg.png?sign=d99c53f2507b5ec651679f7fcaf1ec90&t=1611484064");
+    background-image: url("https://7072-promote-iceland-5g1bnckvaac9cfc3-1305448055.tcb.qcloud.la/promote-Iceland/landing-bg.png?sign=f80fcb535b2cf8d2b0ed0e0e05892f84&t=1617206512");
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }

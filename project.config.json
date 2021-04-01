@@ -21,7 +21,7 @@
         "compileHotReLoad": false,
         "useMultiFrameRuntime": true,
         "useApiHook": true,
-        "useApiHostProcess": true,
+        "useApiHostProcess": false,
         "babelSetting": {
             "ignore": [],
             "disablePlugins": [],
@@ -36,7 +36,7 @@
         "packNpmRelationList": [],
         "minifyWXSS": true
     },
-    "appid": "wxbd3fc9f905457ff3",
+    "appid": "wx2defe304f625d270",
     "projectname": "iceland-test",
     "libVersion": "2.12.2",
     "simulatorType": "wechat",

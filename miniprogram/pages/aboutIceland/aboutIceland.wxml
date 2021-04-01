@@ -4,7 +4,7 @@
 
 <!-- header image section -->
 <view class="exhibitors-header-container">
-    <image class="header-image" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/about-Iceland-header%2011.04.21.png?sign=03fe46b8405c63357d01e62a5ef48125&t=1611630915" alt="" mode="aspectFit"></image>
+    <image class="header-image" src="https://7072-promote-iceland-5g1bnckvaac9cfc3-1305448055.tcb.qcloud.la/promote-Iceland/about-Iceland-header%2011.04.21.png?sign=380925c343b6728a4ff730415e495282&t=1617206784" alt="" mode="aspectFit"></image>
     <view class="exhibitors-text-container">
         <text class="exhibitors-name">ABOUT ICELAND</text>
         <text class="exhibitors-title">关于冰岛</text>

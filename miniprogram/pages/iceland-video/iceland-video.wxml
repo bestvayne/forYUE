@@ -1,10 +1,10 @@
 <!--pages/iceland-video/iceland-video.wxml-->
 <view class="exhibitors-video-container" style="height:{{ windowHeight/3 }}px">
     <video class="video"
-        src="cloud://jprail-prod-23b737.6a70-jprail-prod-23b737-1257787091/cloudbase-cms/upload/2021-01-22/u1g4be5j3wsu3qnulk3wv6akj7yu3d25_.mp4"></video>
+        src="cloud://promote-iceland-5g1bnckvaac9cfc3.7072-promote-iceland-5g1bnckvaac9cfc3-1305448055/cloudbase-cms/upload/2021-03-31/m2lxbrn80japofqyrk0twzlz0j50c352_.mp4"></video>
 </view>
 
-<button bindtap="sendMail">发邮件</button>
+<button bindtap="sendMailToExhibitor">发邮件</button>
 
 <view class="chat-container" style="height:{{ (windowHeight - windowHeight/3) }}px">
 

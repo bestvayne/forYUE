@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url("https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/exhibitors-list.png?sign=084c90b4db2e350b5413d13a3c1951e9&t=1611407067");
+    background-image: url("https://7072-promote-iceland-5g1bnckvaac9cfc3-1305448055.tcb.qcloud.la/promote-Iceland/exhibitors-list.png?sign=fa3ead1092ff6a3950c0a121a3fc1b73&t=1617206863");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     height: 400rpx;

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: url("https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/visitIceland-header.jpg?sign=5998eeab2667f6404f5517da3fbfea16&t=1611482224");
+    background-image: url("https://7072-promote-iceland-5g1bnckvaac9cfc3-1305448055.tcb.qcloud.la/promote-Iceland/visitIceland-header.jpg?sign=b6481d8354c8cc04b9742df08c5e7a32&t=1617206586");
     background-size: 100% 450rpx;
     background-repeat: no-repeat;
 }

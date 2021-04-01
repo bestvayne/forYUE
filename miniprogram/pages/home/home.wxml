@@ -43,16 +43,16 @@
     
     <view class="card-content">
             <navigator url="/pages/aboutIceland/aboutIceland" class="card">
-                <image class="card-bg" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/home-about-Iceland.png?sign=ddcb7730e0eea71dd69bb11b129dbb4e&t=1611654032"></image>
+                <image class="card-bg" src="https://7072-promote-iceland-5g1bnckvaac9cfc3-1305448055.tcb.qcloud.la/promote-Iceland/home-about-Iceland.png?sign=7fc9fcdf5f9f8edd7d49714dd10cfa81&t=1617206653"></image>
             </navigator>
             <navigator class="card">
-                <image class="card-bg" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/home-schedule.png?sign=479a175c3ff59e3fe96ca5a43ebe1c43&t=1611630349"></image>
+                <image class="card-bg" src="https://7072-promote-iceland-5g1bnckvaac9cfc3-1305448055.tcb.qcloud.la/promote-Iceland/home-schedule.png?sign=e70c790418f402009b6e6957666c61f0&t=1617206679"></image>
             </navigator>
             <navigator url="/pages/exhibitor-list/exhibitor-list" class="card">
-                <image class="card-bg" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/home-about-exhibitors.png?sign=c41f0700909a635cb08d63a33b849ee3&t=1611630362"></image>
+                <image class="card-bg" src="https://7072-promote-iceland-5g1bnckvaac9cfc3-1305448055.tcb.qcloud.la/promote-Iceland/home-about-exhibitors.png?sign=09abeff10225f23697238584bcc5a7e3&t=1617206694"></image>
             </navigator>
             <navigator class="card">
-                <image class="card-bg" src="https://6a70-jprail-prod-23b737-1257787091.tcb.qcloud.la/promote-Iceland/home-book-meeting.png?sign=90249d1bd8379c25bac3f2e5f5251684&t=1611630373"></image>
+                <image class="card-bg" src="https://7072-promote-iceland-5g1bnckvaac9cfc3-1305448055.tcb.qcloud.la/promote-Iceland/home-book-meeting.png?sign=aa86617ebf81c79442e456cc24ea52c7&t=1617206706"></image>
             </navigator>
     </view>
 </view>
