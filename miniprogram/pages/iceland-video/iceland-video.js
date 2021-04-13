@@ -29,34 +29,6 @@ Page({
         //         console.info(res)
         //     }
         // })
-        wx.request({
-            // url: 'https://api.sendcloud.net/apiv2/mail/sendcalendar',
-            url:'https://api.sendcloud.net/apiv2/apiuser/list',
-            method:"post",
-            data: {
-                apiUser:'VanceYao_test_vm8y7O',
-                apiKey:'TElazW11U66xIKUm',
-                // from:"",
-                // to:'330359531@qq.com',
-                // subject:"test",
-                // startTime:'2021-04-02 13:00:00',
-                // endTime:'2021-04-02 14:00:00',
-                // title:"旅游产品商务会谈",
-                // organizerName:'inbit',
-                // organizerEmail:"yaoxi@inbit.cn",
-                // location:'online',
-                // participatorNames:"Vance Yao"
-            },
-            header: {
-
-            },
-            success: function (res) {
-                console.info(res)
-            },
-            fail:function(err){
-                console.log(err)
-            }
-        })
     },
 
     onLoad: function (options) {
@@ -162,9 +134,16 @@ Page({
 
     onShow: function () {
         const _that = this
+        let filterRes 
         db.collection('iceland_chat_room').get().then(res => {
-            this.setData({
-                chatMessageList: res.data
+
+            // filter this chatMessage array, only get 'isShow' data
+            filterRes = res.data.filter(function(e){
+                return e.isShow
+            })
+            
+            _that.setData({
+                chatMessageList: filterRes
             })
         })
     },

@@ -38,7 +38,7 @@
     },
     "appid": "wx2defe304f625d270",
     "projectname": "iceland-test",
-    "libVersion": "2.12.2",
+    "libVersion": "2.16.0",
     "simulatorType": "wechat",
     "simulatorPluginLibVersion": {},
     "cloudfunctionTemplateRoot": "cloudfunctionTemplate",
