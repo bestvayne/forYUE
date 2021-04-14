@@ -4,7 +4,7 @@
         src="cloud://promote-iceland-5g1bnckvaac9cfc3.7072-promote-iceland-5g1bnckvaac9cfc3-1305448055/cloudbase-cms/upload/2021-03-31/m2lxbrn80japofqyrk0twzlz0j50c352_.mp4"></video>
 </view>
 
-<button bindtap="sendMailToExhibitor">发邮件</button>
+<!-- <button bindtap="sendMailToExhibitor">发邮件</button> -->
 
 <view class="chat-container" style="height:{{ (windowHeight - windowHeight/3) }}px">
 

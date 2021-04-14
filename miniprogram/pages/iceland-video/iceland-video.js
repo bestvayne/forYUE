@@ -134,17 +134,17 @@ Page({
 
     onShow: function () {
         const _that = this
-        let filterRes 
-        db.collection('iceland_chat_room').get().then(res => {
-
-            // filter this chatMessage array, only get 'isShow' data
-            filterRes = res.data.filter(function(e){
-                return e.isShow
-            })
-            
-            _that.setData({
-                chatMessageList: filterRes
-            })
+        db.collection('iceland_chat_room').where({
+            isShow:true
+        }).watch({
+            onChange:function(snapshot){
+                _that.setData({
+                    chatMessageList: snapshot.docs
+                })
+            },
+            onError: function(err) {
+                console.error('the watch closed because of error', err)
+            }
         })
     },
 
