@@ -8,46 +8,83 @@ Page({
 	 */
 	data: {
 		exhibitorsId: '',
-		exhibitorsInfo:'',
-
+		exhibitorsInfo: '',
+		clipboardContent: "",
 		text_isShow: false,
 	},
 
 	// 自定义事件
 
 	// 点击 展示/收起 介绍文字
-	textIsShow:function(){
+	textIsShow: function () {
 		console.log(this.data.text_isShow)
 		this.setData({
 			text_isShow: !this.data.text_isShow,
 		})
 	},
 
+	// 点击复制文本内容
+	copyText: function (e) {
+		console.log(e)
+		wx.setClipboardData({
+			data: e.currentTarget.dataset.text,
+			success: function (res) {
+				wx.getClipboardData({
+					success: function (res) {
+						wx.showToast({
+							title: '复制成功'
+						})
+					}
+				})
+			}
+		})
+	},
+
 	// 打电话
 	callPhone: function () {
-        let that = this
-            wx.makePhoneCall({
-              phoneNumber: this.data.exhibitorsInfo.iceland_exhibitors_phone//需要拨打的电话号码
-        })
-    },
+		let that = this
+		wx.makePhoneCall({
+			//需要拨打的电话号码
+			phoneNumber: this.data.exhibitorsInfo.iceland_exhibitors_phone
+		})
+	},
+
+	// 下载文件
+	downloadFile: function (e) {
+		wx.cloud.downloadFile({
+			fileID: e.currentTarget.dataset.filecloud, // 文件 ID
+			success: res => {
+				console.log(res.tempFilePath)
+				wx.openDocument({
+					filePath: res.tempFilePath,
+					success: function (res) {
+						console.log(res)
+					  console.log('打开文档成功')
+					}
+				})
+			},
+			fail: console.error
+		})
+	},
 
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
 	onLoad: function (options) {
 		var _that = this
-    	const eventChannel = _that.getOpenerEventChannel()
+		const eventChannel = _that.getOpenerEventChannel()
 		eventChannel.on('sendData', function (res) {
+			console.log(res.exhibitorsId)
 			_that.setData({
 				exhibitorsId: res.exhibitorsId
 			})
 		})
-		console.log(_that.data.exhibitorsId.id)
+		
 
-	
+
 
 		db.collection('iceland_exhibitors').where({
-			iceland_exhibitors_id: _that.data.exhibitorsId.id
+			_id: _that.data.exhibitorsId
 		}).get().then(res => {
 			// res.data 包含该记录的数据
 

@@ -5,74 +5,56 @@
 </view>
 
 <!-- <button bindtap="sendMailToExhibitor">发邮件</button> -->
+<scroll-view id="page" style='height: {{windowHeight - 60}}px' scroll-y="true" scroll-top="{{scrollTop}}">
+    <view class="chat-container" style="height:{{ (windowHeight - windowHeight/3) }}px">
+        <!-- if user not login -->
+        <view wx:if="{{!userOpenId}}" class="not-login-container">
+            <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile">登录</button>
+            <text class="login-tip-text">登录即可查看留言</text>
+        </view>
 
-<view class="chat-container" style="height:{{ (windowHeight - windowHeight/3) }}px">
-
-    <!-- if user not login -->
-    <view wx:if="{{!userOpenId}}" class="not-login-container">
-        <button class="login-btn" type="primary" size="big" wx:if="{{ !CanIUse }}" open-type="getUserInfo"
-            bindgetuserinfo="onGetUserInfo">登录</button>
-        <text class="login-tip-text">登录即可查看留言</text>
-    </view>
-
-    <!-- user is login -->
-    <view wx:else>
-        
-        <!-- other user chat message -->
-        <!-- 
-            根据当前页面的 openId 判断是否在页面右侧显示 chat message container
-         -->
-        <view 
-            wx:for="{{chatMessageList}}" 
-            wx:key="_id" 
-            wx:for-item="chatMessageItem" 
-            class="{{ chatMessageItem._id == chatMessageList[chatMessageList.length-1]._id?'other-user-chat-container-mg-b-140rpx':'other-user-chat-container' }} {{ chatMessageItem.useropenid == userOpenId?'user-chat-container':'other-user-chat-container' }}">
-            <!-- user avatar and user name container -->
+        <!-- user is login -->
+        <view wx:else >
+        <view style="margin-bottom:140rpx">
+            <!-- other user chat message -->
+            <!-- 
+                根据当前页面的 openId 判断是否在页面右侧显示 chat message container
+            -->
             <view 
-                class="{{ chatMessageItem.useropenid == userOpenId?'user-info-container':'other-user-info-container' }}">
-
-                <!-- user avatar -->
-                <image 
-                    class="{{ chatMessageItem.useropenid == userOpenId?'user-avatar':'other-user-avatar '}}"
-                    src="{{chatMessageItem.useravatar}}"
-                    mode="aspectFit"></image>
-
-                <!-- user name -->
+                wx:for="{{chatMessageList}}" 
+                wx:key="_id" 
+                wx:for-item="chatMessageItem" 
+                class="{{ chatMessageItem._id == chatMessageList[chatMessageList.length-1]._id?'other-user-chat-container-mg-b-140rpx':'other-user-chat-container' }} {{ chatMessageItem.useropenid == userOpenId?'user-chat-container':'other-user-chat-container' }}">
+                <!-- user avatar and user name container -->
                 <view 
-                    class="{{ chatMessageItem.useropenid == userOpenId?'user-name':'other-user-name'}}">
-                        {{chatMessageItem.username}}
+                    class="{{ chatMessageItem.useropenid == userOpenId?'user-info-container':'other-user-info-container' }}">
+
+                    <!-- user avatar -->
+                    <image 
+                        class="{{ chatMessageItem.useropenid == userOpenId?'user-avatar':'other-user-avatar '}}"
+                        src="{{chatMessageItem.useravatar}}"
+                        mode="aspectFit"></image>
+
+                    <!-- user name -->
+                    <view 
+                        class="{{ chatMessageItem.useropenid == userOpenId?'user-name':'other-user-name'}}">
+                            {{chatMessageItem.username}}
+                    </view>
+                </view>
+
+                <!-- chat message -->
+                <view 
+                    class="{{ chatMessageItem.useropenid == userOpenId?'chat-message-container':'other-chat-message-container'}}">
+                        {{chatMessageItem.chat_message}}
                 </view>
             </view>
 
-            <!-- chat message -->
-            <view 
-                class="{{ chatMessageItem.useropenid == userOpenId?'chat-message-container':'other-chat-message-container'}}">
-                    {{chatMessageItem.chat_message}}
-            </view>
+            <!-- 
+                !!! Give the element a fixed height attribute, and let the "margin-bottom" attribute of his brother element take effect
+             -->
+            <view style="height:1px"></view>
+
         </view>
-
-        <!-- usre chat message -->
-        <!-- <view class="user-chat-container">
-            <view class="user-info-container">
-                <image class="user-avatar"
-                    src="https://thirdwx.qlogo.cn/mmopen/vi_32/PiajxSqBRaELRLYcNGe5F5TRaucKOBeDL9y8Hhr0RDv17GTkk5X59ssUHDYboH6IwuQHG2icaAjBcuDv7UEeNJVQ/132"
-                    mode="aspectFit"></image>
-
-                <text class="user-name">{{userInfo.nickName}}</text>
-            </view>
-            <view class="chat-message-container">
-                好棒！
-            </view>
-        </view> -->
-
-        <!-- send message section -->
-
-        <!-- if user not login -->
-        <!-- <view wx:if="{{!userInfo}}" class="send-message-container">
-            <input class="iceland-video-input" placeholder="登录后即可发送消息" placeholder-class="iceland-video-input-placeholder" type="input"/>
-            <button class="send-message-btn" type="primary" size="big" wx:if="{{ !CanIUse }}" open-type="getUserInfo" bindgetuserinfo="onGetUserInfo">登录</button>
-        </view> -->
-
         <!-- user is login -->
         <view class="send-message-container">
             <input 
@@ -88,6 +70,6 @@
                 size="big"
                 bindtap="sendMessage">发送</button>
         </view>
+        </view>
     </view>
-
-</view>
+</scroll-view>

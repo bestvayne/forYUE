@@ -9,7 +9,7 @@
 
     <block wx:for="{{allExhibitorsInfo}}" wx:key="_id" wx:for-index="_id" wx:for-item="exhibitors">
         <view 
-            data-_id="{{ exhibitors.iceland_exhibitors_id }}"
+            data-_id="{{ exhibitors._id }}"
             bindtap="goToExhibitors" class="exhitbitor-list-container">
             <view class="exhibitor-content">
                 <view class="exhibitor-preview-info">
@@ -22,25 +22,6 @@
                 </view>
                 <view class="exhibitor-preview-image-container">
                     <image src="{{ exhibitors.iceland_exhibitors_header_image }}" class="exhibitor-preview-image" mode="aspectFit"></image>
-                </view>
-            </view>
-        </view>
-    </block>
-
-    <block wx:for="{{allExhibitorsInfo}}" wx:key="_id" wx:for-index="_id" wx:for-item="exhibitors">
-        <view 
-            data-_id="{{ exhibitors.iceland_exhibitors_id }}" class="exhitbitor-list-container">
-            <view class="exhibitor-content">
-                <view class="exhibitor-preview-info">
-                    <view class="exhibitor-name-container">
-                        <text class="exhibitor-name">Blue Sky</text>
-                        <text class="exhibitor-text">旅行社</text>
-                    </view>
-                    <view class="solid"></view>
-                    <text class="exhibitor-intro">Blue Sky是一家获得授权的旅行社，有着超过30年的行业经验，提供前往冰岛全国各个景点的旅游服务。我们拥有专业的知识、丰富多样的旅游产品和充满非凡冒险的行程，竭尽所能为您提供愉快、舒适和难忘的旅行体验。GrayLine Iceland有超过55条旅游线路，覆盖冰岛150多个地标和目的地，为您的假日提供多种选择。在天然温泉中放松身心，高原徒步旅行，游览雷克雅未克的街道，海上乘船赏鲸…我们能满足各式各样旅行者的需求。</text>
-                </view>
-                <view class="exhibitor-preview-image-container">
-                    <image src="../../images/test.png" class="exhibitor-preview-image" mode="aspectFit"></image>
                 </view>
             </view>
         </view>

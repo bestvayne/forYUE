@@ -1,5 +1,5 @@
 /* pages/exhibitor/exhibitor.wxss */
-.page-container{
+.page-container {
     /* width: 100%; */
     padding: 0 20px;
     display: flex;
@@ -8,19 +8,19 @@
     background: #ffffff;
 }
 
-.exhibitors-header-container{
+.exhibitors-header-container {
     width: 100%;
     height: 400rpx;
     position: relative;
 }
 
-.header-image{
+.header-image {
     width: 100%;
     height: 100%;
     position: relative;
 }
 
-.exhibitors-text-container{
+.exhibitors-text-container {
     position: absolute;
     top: 0;
     left: 0;
@@ -32,24 +32,26 @@
     padding: 10rpx 20rpx;
 }
 
-.exhibitors-name{
+.exhibitors-name {
     font-size: 50rpx;
     color: #FFFFFF;
+    text-shadow: 1px 1px 2px black;
 }
 
-.exhibitors-title{
+.exhibitors-title {
     font-size: 50rpx;
     color: #FFFFFF;
     font-weight: 600;
+    text-shadow: 1px 1px 2px black;
 }
 
-.solid-white-3px{
+.solid-white-3px {
     background: #ffffff;
     width: 10%;
     height: 3px;
 }
 
-.exhibitors-introduction-contaienr{
+.exhibitors-introduction-contaienr {
     margin: 70rpx 0;
     width: 100%;
     height: 220rpx;
@@ -58,39 +60,64 @@
     justify-content: space-around;
 }
 
-.exhibitors-introduction-text-1{
+.exhibitors-introduction-text-1 {
     font-size: 48rpx;
     color: #191414;
     letter-spacing: 0.4px;
 }
 
-.exhibitors-introduction-text-2{
+.exhibitors-introduction-text-2 {
     font-size: 32rpx;
     color: #373D40;
     letter-spacing: 0;
     font-weight: 600;
 }
 
-.solid-balck-3px{
+.solid-balck-3px {
     width: 8%;
     border: 6rpx solid #191414;
 }
 
-.exhibitors-video-container{
+.exhibitors-video-container {
     width: 100%;
     height: 400rpx;
+    margin-bottom: 50rpx;
 }
 
-.video{
+.video {
     width: 100%;
     height: 100%;
 }
 
-.text-isShow-section-container{
+.swiper-home {
+    z-index: 0;
+    width: 100%;
+    height: 218px;
+}
+
+.gallery-image {
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.home-title {
+    z-index: 1000;
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-shadow: 1px 1px 2px black;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #FFF;
+}
+
+.text-isShow-section-container {
     width: 100%;
 }
 
-.text-isHidden-section-container{
+.text-isHidden-section-container {
     width: 100%;
     height: 250rpx;
     overflow: hidden;
@@ -101,7 +128,7 @@
     -webkit-box-orient: vertical;
 }
 
-.isShow-up-arrow-container{
+.isShow-up-arrow-container {
     width: 100%;
     height: 30rpx;
     display: flex;
@@ -109,39 +136,39 @@
     align-items: center;
 }
 
-.isShow-up-arrow{
+.isShow-up-arrow {
     width: 30rpx;
     height: 30rpx;
 }
 
-.text-section{
+.text-section {
     width: 100%;
-    margin-top: 50rpx;
 }
 
-.exhibitor-des-text{
+.exhibitor-des-text {
     font-size: 28rpx;
     color: #373D40;
     letter-spacing: 2rpx;
     line-height: 50rpx;
+    margin-bottom: 20rpx;
 }
 
-.content-image-container{
+.content-image-container {
     width: 100%;
     height: auto;
 }
 
-.content-image{
+.content-image {
     width: 100%;
 }
 
-.solid-balck-3px-20{
+.solid-balck-3px-20 {
     width: 20%;
     margin-top: 20px;
     border: 3rpx solid #191414;
 }
 
-.exhibitors-contact-contaienr{
+.exhibitors-contact-contaienr {
     margin: 70rpx 0;
     width: 100%;
     height: 220rpx;
@@ -151,68 +178,73 @@
     align-items: flex-end;
 }
 
-.exhibitors-contact-text-1{
+.exhibitors-contact-text-1 {
     font-size: 48rpx;
     color: #191414;
     letter-spacing: 0.4px;
 }
 
-.exhibitors-contact-text-2{
+.exhibitors-contact-text-2 {
     font-size: 32rpx;
     color: #373D40;
     letter-spacing: 0;
 }
 
-.contact-container{
+.contact-container {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.single-contact-container{
+.single-contact-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
     margin: 10rpx 0;
 }
 
-.contact-content-container{
-    width: 100%;
+.contact-content-container {
+    width: 90%;
     display: flex;
     align-items: center;
 }
 
-.icon-contact{
+.icon-contact {
     width: 40rpx;
     height: 40rpx;
     margin-right: 20rpx;
 }
 
-.contact-text{
+.contact-text {
     font-size: 28rpx;
     color: #373D40;
     letter-spacing: 0;
-    line-height: 26px;
+    line-height: 56rpx;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    /*限制不换行*/
+    text-overflow: ellipsis;
 }
 
-.contact-content-arrow{
+.contact-content-arrow {
     width: 50rpx;
     height: 50rpx;
 }
 
-.solid-balck-3px-20-right{
+.solid-balck-3px-20-right {
     align-self: flex-end;
     width: 20%;
     margin-top: 20px;
     border: 3rpx solid #191414;
 }
 
-.download-container{
+.download-container {
     width: 100%;
     margin-bottom: 70rpx;
 }
 
-.single-download-container{
+.single-download-container {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -220,26 +252,26 @@
     margin: 10rpx 0;
 }
 
-.icon-download{
+.icon-download {
     width: 80rpx;
     height: 80rpx;
     margin-right: 20rpx;
 }
 
-.download-text{
+.download-text {
     font-size: 28rpx;
     color: #373D40;
     letter-spacing: 0;
     line-height: 26px;
 }
 
-.card-container{
+.card-container {
     display: flex;
     justify-content: center;
 }
 
-.socia-card{
-    background:#ffffff;
+.socia-card {
+    background: #ffffff;
     width: 94%;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -249,19 +281,19 @@
     justify-content: center;
 }
 
-.wechat-container{
+.wechat-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.exhibitors-logo{
+.exhibitors-logo {
     width: 220rpx;
     height: 180rpx;
     margin: 60rpx 0;
 }
 
-.wechat-account-text{
+.wechat-account-text {
     font-size: 28rpx;
     color: #373D40;
     letter-spacing: 1px;
@@ -269,7 +301,7 @@
     font-weight: 600;
 }
 
-.wechat-tip-text{
+.wechat-tip-text {
     font-size: 24rpx;
     color: #727272;
     letter-spacing: 2.2rpx;
@@ -278,62 +310,63 @@
     margin: 30rpx 0;
 }
 
-.wechat-qr{
+.wechat-qr {
     width: 200rpx;
     height: 200rpx;
 }
 
-.solid-balck-1px-90{
+.solid-balck-1px-90 {
     width: 90%;
     border: 1px solid #373D40;
     margin-top: 30px;
-    margin-bottom: 20px;
 }
 
-.socia-list-container{
+.socia-list-container {
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     justify-content: space-around;
     margin-bottom: 150rpx;
+    margin-top: 40rpx;
 }
 
-.single-socia-container{
+.single-socia-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.socia-icon{
+.socia-icon {
     width: 50rpx;
     height: 50rpx;
 }
 
-.socia-name{
+.socia-name {
     font-size: 22rpx;
     color: #373D40;
     letter-spacing: 0;
     text-align: center;
-    line-height: 25px;
+    line-height: 34rpx;
+    margin-top: 10rpx;
 }
 
-.meeting-btn{
+.meeting-btn {
     width: 100%;
     height: 100rpx;
     background: #191414;
     font-size: 32rpx;
     color: #FFFFFF;
     letter-spacing: 0.5px;
-    position:fixed; 
-    bottom:0;
+    position: fixed;
+    bottom: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.meeting-icon{
+.meeting-icon {
     margin-left: 20rpx;
     width: 30rpx;
     height: 30rpx;

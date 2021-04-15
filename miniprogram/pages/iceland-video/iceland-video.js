@@ -11,7 +11,8 @@ Page({
         windowHeight: '',
         userOpenId: '',
         chatMessageList: "",
-        canIUse: wx.canIUse('button.open-type.getUserInfo')
+        // canIUse: wx.canIUse('button.open-type.getUserInfo'),
+        canIUseGetUserProfile: false,
     },
 
     sendMailToExhibitor: function () {
@@ -32,6 +33,13 @@ Page({
     },
 
     onLoad: function (options) {
+        if (wx.getUserProfile) {
+            this.setData({
+                canIUseGetUserProfile: true
+            })
+        }
+
+
         if (app.globalData.userOpenId) {
             this.setData({
                 userOpenId: app.globalData.userOpenId
@@ -41,27 +49,26 @@ Page({
         let _that = this;
         // Get user auth status
         wx.getSetting({
-            success: res => {
-                if (res.authSetting['scope.userInfo']) {
-                    wx.getUserInfo({
-                        success: res => {
-                            _that.setData({
-                                avatarUrl: res.userInfo.avatarUrl,
-                                userInfo: res.userInfo
-                            })
-                        }
-                    })
+                success: res => {
+                    if (res.authSetting['scope.userInfo']) {
+                        wx.getUserInfo({
+                            success: res => {
+                                _that.setData({
+                                    avatarUrl: res.userInfo.avatarUrl,
+                                    userInfo: res.userInfo
+                                })
+                            }
+                        })
+                    }
                 }
-            }
-        })
-
-        wx.getSystemInfo({
-            success: (result) => {
-                this.setData({
-                    windowHeight: result.windowHeight
-                })
-            },
-        })
+            }),
+            wx.getSystemInfo({
+                success: (result) => {
+                    this.setData({
+                        windowHeight: result.windowHeight
+                    })
+                },
+            })
 
     },
     onGetOpenid: function () {
@@ -79,7 +86,28 @@ Page({
         })
     },
 
+    // new function that get user nickname and avatarUrl
+    getUserProfile(e) {
+        const _that = this
+        wx.getUserProfile({
+            desc: '用于展示您的头像和昵称', 
+            success: (res) => {
+                this.setData({
+                    isLogin: true,
+                    logged: true,
+                    userInfo: res.userInfo,
+                    hasUserInfo: true
+                })
+                _that.onGetOpenid();
+                app.globalData.isLogin = _that.data.isLogin;
+                _that.onShow()
+            }
+        })
+    },
+
+
     onGetUserInfo: function (e) {
+        console.log(e)
         var _that = this;
 
         if (!_that.data.logged && e.detail.userInfo) {
@@ -92,11 +120,11 @@ Page({
 
             _that.onGetOpenid();
             app.globalData.isLogin = _that.data.isLogin;
-            _that.onShow({})
+            _that.onShow()
         }
     },
 
-    // 获取用户输入但并未发送的消息
+    // get user input message
     getReadyMessage: function (e) {
         console.log(e.detail.value)
         this.setData({
@@ -104,7 +132,7 @@ Page({
         })
     },
 
-    // 点击发送按钮时，向数据库写入信息
+    // when user click send button, add this input date to DB
     sendMessage: function () {
         const _that = this
         _that.onGetOpenid()
@@ -118,8 +146,7 @@ Page({
             },
             success: function (res) {
                 wx.showToast({
-                    title: '发送成功',
-                    // image: '../../images/icon-happy.png',
+                    title: '请等待审核^-^',
                     icon: "success",
                     duration: 2000
                 })
@@ -131,18 +158,34 @@ Page({
         })
     },
 
+    // scroll page to bottom
+    pageScrollToBottom: function () {
+        var that = this;
+        var height = wx.getSystemInfoSync().windowHeight;
+        wx.createSelectorQuery().select('#page').boundingClientRect(function (rect) {
+            if (rect) {
+                that.setData({
+                    windowHeight: height,
+                    scrollTop: rect.height
+                })
+            }
+        }).exec()
+    },
 
     onShow: function () {
         const _that = this
         db.collection('iceland_chat_room').where({
-            isShow:true
+            isShow: true
         }).watch({
-            onChange:function(snapshot){
+            onChange: function (snapshot) {
+                // get change message and bind this page
                 _that.setData({
                     chatMessageList: snapshot.docs
                 })
+                // scroll to page bottom
+                _that.pageScrollToBottom()
             },
-            onError: function(err) {
+            onError: function (err) {
                 console.error('the watch closed because of error', err)
             }
         })

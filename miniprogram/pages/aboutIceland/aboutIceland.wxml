@@ -95,9 +95,19 @@
 <view class="socia-card">
 <view class="wechat-container">
     <image class="exhibitors-logo" src="../../images/VisitIceland-logo-color.png" alt="" mode="aspectFit"></image>
-    <text class="wechat-account-text">公众号ID</text>
-    <text class="wechat-account-text">visitIceland</text>
-    <image class="wechat-qr" src="../../images/iceland-qr.png" alt="" mode="aspectFit"></image>
+    <view class="iceland-qrcode-contaienr">
+        <view class="wechat-container">
+            <text class="wechat-account-text">公众号ID</text>
+            <text class="wechat-account-text">visitIceland</text>
+            <image class="wechat-qr" src="../../images/iceland-qr.png" alt="" mode="aspectFit"></image>
+        </view>
+        
+        <view class="wechat-container">
+            <text class="wechat-account-text">公众号ID</text>
+            <text class="wechat-account-text">冰岛出口投资促进局</text>
+            <image class="wechat-qr" src="cloud://promote-iceland-5g1bnckvaac9cfc3.7072-promote-iceland-5g1bnckvaac9cfc3-1305448055/promote-Iceland/WechatIMG71.jpeg" alt="" mode="aspectFit"></image>
+        </view>
+    </view>
 </view>
 
 <view class="solid-balck-1px-90"></view>

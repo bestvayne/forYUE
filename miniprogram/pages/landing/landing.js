@@ -1,5 +1,4 @@
 // pages/landing/landing.js
-const invitationCode = ['0101','0202']
 
 Page({
 
@@ -7,7 +6,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-        inputValue:''
+        inputValue:'',
+        invitationCode: ['0101','0202']
     },
 
     /**
@@ -39,7 +39,7 @@ Page({
             | 
             */            
 
-            let verifyInvitationCode = invitationCode.indexOf(String(this.data.inputValue))
+            let verifyInvitationCode = this.data.invitationCode.indexOf(String(this.data.inputValue))
 
             if(verifyInvitationCode !== -1){
                 wx.navigateTo({
