@@ -74,29 +74,29 @@ Page({
 		var _that = this
 		const eventChannel = _that.getOpenerEventChannel()
 		eventChannel.on('sendData', function (res) {
-			console.log(res.exhibitorsId)
-			_that.setData({
-				exhibitorsId: res.exhibitorsId
+			console.log(res)
+			// get exhibitor-list page send date _id
+			// query this date by res.exhibitors
+			db.collection('iceland_exhibitors').where({
+				_id: res.exhibitorsId
+			}).get().then(res => {
+				// res.data 包含该记录的数据
+	
+				// REG replace <p> tag
+				res.data[0].iceland_exhibitors_des = res.data[0].iceland_exhibitors_des.replace(/<[^<>]+>/g, '<p class="exhibitor-des-text">')
+	
+				res.data[0].iceland_exhibitors_des_2 = res.data[0].iceland_exhibitors_des_2.replace(/<p.*?>/g, '<p class="exhibitor-des-text">')
+	
+				_that.setData({
+					exhibitorsInfo: res.data[0],
+				})
 			})
 		})
 		
 
 
 
-		db.collection('iceland_exhibitors').where({
-			_id: _that.data.exhibitorsId
-		}).get().then(res => {
-			// res.data 包含该记录的数据
 
-			// REG replace <p> tag
-			res.data[0].iceland_exhibitors_des = res.data[0].iceland_exhibitors_des.replace(/<[^<>]+>/g, '<p class="exhibitor-des-text">')
-
-			res.data[0].iceland_exhibitors_des_2 = res.data[0].iceland_exhibitors_des_2.replace(/<p.*?>/g, '<p class="exhibitor-des-text">')
-
-			_that.setData({
-				exhibitorsInfo: res.data[0],
-			})
-		})
 
 	},
 

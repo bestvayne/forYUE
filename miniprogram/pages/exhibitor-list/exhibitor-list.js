@@ -15,7 +15,7 @@ Page({
      */
     onLoad: function (options) {
         const _that = this
-        db.collection('iceland_exhibitors').get().then(res => {
+        db.collection('iceland_exhibitors').limit(10).get().then(res => {
             res.data.forEach(exhibitors => {
                 exhibitors.iceland_exhibitors_des = exhibitors.iceland_exhibitors_des.replace(/<[^<>]+>/g,'')
             })
