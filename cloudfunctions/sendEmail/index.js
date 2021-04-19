@@ -1,19 +1,22 @@
 const cloud = require('wx-server-sdk')
-cloud.init()
+// cloud.init()
+cloud.init({
+  env: 'promote-iceland-5g1bnckvaac9cfc3',
+})
 
 var nodemailer = require('nodemailer')
 
-const ical = require('ical-generator');
-const cal = ical();
-cal.events([
-  {
-      start: new Date(),
-      end: new Date(new Date().getTime() + 3600000),
-      summary: 'Example Event',
-      description: 'It works ;)',
-      url: 'http://sebbo.net/'
-  }
-]);
+// const ical = require('ical-generator');
+// const cal = ical();
+// cal.events([
+//   {
+//       start: new Date(),
+//       end: new Date(new Date().getTime() + 3600000),
+//       summary: 'Example Event',
+//       description: 'It works ;)',
+//       url: 'http://sebbo.net/'
+//   }
+// ]);
 
 // 创建一个SMTP客户端配置
 var config = {
@@ -29,7 +32,7 @@ var transporter = nodemailer.createTransport(config);
 
 // 云函数入口函数
 exports.main = async (event, context) => {
-  console.info(event)
+  console.info("这个云函数的event:"+event)
   // 创建一个邮件对象
   var mail = {
     // 发件人
@@ -37,16 +40,9 @@ exports.main = async (event, context) => {
     // 主题
     subject: event.emailSubject,
     // 收件人
-    to: "330359531@qq.com",
+    to: event.emailAccepted,
     // 邮件内容，text或者html格式
-    text: "123", //可以是链接，也可以是验证码
-    icalEvent: {
-      // start: new Date(),
-      // end: new Date(new Date().getTime() + 3600000),
-      summary: 'Example Event',
-      description: 'It works ;)',
-      url: 'http://sebbo.net/'
-    },
+    text: event.emailContent, 
   };
 
   let res = await transporter.sendMail(mail);

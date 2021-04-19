@@ -50,7 +50,7 @@
             <image class="icon-contact" src="../../images/icon-email.png"  mode="aspectFit"></image>
             <text class="contact-text">Thorleifur@islandsstofa.is</text>
         </view>
-        <view>
+        <view bindtap='copyText' data-text="Thorleifur@islandsstofa.is">
             <image class="contact-content-arrow" src="../../images/exhibitor-arrow-right.png"  mode="aspectFit"></image>
         </view>
     </view>
@@ -98,7 +98,7 @@
     <view class="iceland-qrcode-contaienr">
         <view class="wechat-container">
             <text class="wechat-account-text">公众号ID</text>
-            <text class="wechat-account-text">visitIceland</text>
+            <text class="wechat-account-text">冰岛旅游局</text>
             <image class="wechat-qr" src="../../images/iceland-qr.png" alt="" mode="aspectFit"></image>
         </view>
         

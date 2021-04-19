@@ -2,19 +2,8 @@
 <!-- container -->
 <view class="page-container">
 
-    <!-- header image section -->
-    <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_video }}" class="exhibitors-header-container">
-        <image class="header-image" src="{{ exhibitorsInfo.iceland_exhibitors_header_image }}" alt="" mode="aspectFit">
-        </image>
-        <view class="exhibitors-text-container">
-            <text class="exhibitors-name">{{ exhibitorsInfo.iceland_exhibitors_name }}</text>
-            <text class="exhibitors-title">旅行社</text>
-            <view class="solid-white-3px"></view>
-        </view>
-    </view>
-
     <!--Carousel-->
-    <swiper wx:else indicator-dots='true' autoplay='true' interval='5000' duration='1500' circular='false' class="swiper-home">
+    <swiper wx:if="{{ exhibitorsInfo.iceland_exhibitors_gallery }}" indicator-dots='true' autoplay='true' interval='5000' duration='1500' circular='false' class="swiper-home">
         <block wx:for="{{ exhibitorsInfo.iceland_exhibitors_gallery }}" wx:for-item="gallery" wx:key="*this">
             <swiper-item>
                 <!-- <text class="home-title">{{ exhibitorsInfo.iceland_exhibitors_name }}</text> -->
@@ -29,6 +18,17 @@
             </swiper-item>
         </block>
     </swiper>
+
+    <!-- header image section -->
+    <view wx:else class="exhibitors-header-container">
+        <image class="header-image" src="{{ exhibitorsInfo.iceland_exhibitors_header_image }}" alt="" mode="aspectFit">
+        </image>
+        <view class="exhibitors-text-container">
+            <text class="exhibitors-name">{{ exhibitorsInfo.iceland_exhibitors_name }}</text>
+            <text class="exhibitors-title">旅行社</text>
+            <view class="solid-white-3px"></view>
+        </view>
+    </view>
 
     <!-- introduction section -->
     <view class="exhibitors-introduction-contaienr">
@@ -144,7 +144,7 @@
             <view class="wechat-container">
                 <image class="exhibitors-logo" src="{{ exhibitorsInfo.iceland_exhibitors_logo }}" alt="" mode="aspectFit">
                 </image>
-                <text class="wechat-account-text">公众号ID</text>
+                <text class="wechat-account-text">{{ exhibitorsInfo.iceland_exhibitors_wechat_title }}</text>
                 <text class="wechat-account-text">{{ exhibitorsInfo.iceland_exhibitors_wechat }}</text>
                 <image class="wechat-qr" src="{{ exhibitorsInfo.iceland_exhibitors_wechat_image }}" alt="" mode="aspectFit">
                 </image>
@@ -191,7 +191,7 @@
 </view>
 
 <!-- meeting button section -->
-<view class="meeting-btn">
+<view class="meeting-btn" bindtap="goToSendMeeting">
     <view>
         <text class="meeting-text">预约会议</text>
         <image class="meeting-icon" src="../../images/meeting-arrow.png" mode="aspectFit"></image>

@@ -1,0 +1,3 @@
+<!--pages/sendMeeting/sendMeeting.wxml-->
+<text>{{ this.data }}</text>
+<button bindtap="sendMailToExhibitor">test</button>

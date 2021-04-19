@@ -15,23 +15,6 @@ Page({
         canIUseGetUserProfile: false,
     },
 
-    sendMailToExhibitor: function () {
-        // wx.cloud.callFunction({
-        //     name:"sendEmail",
-        //     data: {
-        //         "emailSubject": 'inbit 邀请你参加视频会议',
-        //         "emailAccepted": '330359531@qq.com',
-        //         "emailContent": 'Hello,我们对您的旅行产品很感兴趣，可以聊聊吗？'
-        //     },
-        //     success(res){
-        //         console.info(res)
-        //     },
-        //     fail(res){
-        //         console.info(res)
-        //     }
-        // })
-    },
-
     onLoad: function (options) {
         if (wx.getUserProfile) {
             this.setData({

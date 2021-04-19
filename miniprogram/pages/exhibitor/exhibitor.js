@@ -67,6 +67,23 @@ Page({
 		})
 	},
 
+	goToSendMeeting: function (e) {
+        const _that = this
+		const email = _that.data.exhibitorsInfo.iceland_exhibitors_email
+        const exhibitorName = _that.data.exhibitorsInfo.iceland_exhibitors_name
+		console.log(email,exhibitorName)
+        wx.navigateTo({
+            url: '/pages/sendMeeting/sendMeeting',
+            success: function (res) {
+                res.eventChannel.emit('sendData', {
+					email: email,
+					exhibitorName: exhibitorName
+                })
+            }
+        })
+    },
+
+
 	/**
 	 * 生命周期函数--监听页面加载
 	 */
@@ -92,12 +109,6 @@ Page({
 				})
 			})
 		})
-		
-
-
-
-
-
 	},
 
 	/**
