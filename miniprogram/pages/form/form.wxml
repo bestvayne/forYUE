@@ -12,16 +12,18 @@
 
     <view>
         <view class="header-text">*信息核实完成后我们会向您的邮箱发送邀请码，您可凭借邀请码参加会议。</view>
-        <picker bindchange="pickerVisitorType" mode="selector" value="{{visitorTypeIndex}}" range="{{visitorType}}">
+        <picker class="relative" bindchange="pickerVisitorType" mode="selector" value="{{visitorTypeIndex}}" range="{{visitorType}}">
             <view class="picker">
                 {{visitorType[visitorTypeIndex]}} 
             </view>
+            <image class="icon-drop-down" src="../../images/icon-dropDown.png" alt=""></image>
         </picker>
 
-        <picker bindchange="pickerVisitorGoal" mode="selector" value="{{visitorGoalIndex}}" range="{{visitorGoal}}">
+        <picker class="relative" bindchange="pickerVisitorGoal" mode="selector" value="{{visitorGoalIndex}}" range="{{visitorGoal}}">
             <view class="picker">
                 {{visitorGoal[visitorGoalIndex]}} 
             </view>
+            <image class="icon-drop-down" src="../../images/icon-dropDown.png" alt=""></image>
         </picker>
     </view>
 

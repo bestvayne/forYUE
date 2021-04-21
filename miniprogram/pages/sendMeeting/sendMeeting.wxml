@@ -1,3 +1,48 @@
 <!--pages/sendMeeting/sendMeeting.wxml-->
-<text>{{ this.data }}</text>
-<button bindtap="sendMailToExhibitor">test</button>
+
+<picker class="picker-container" bindchange="pickerExhibitors" mode="selector" value="{{exhibitorsIndex}}"
+    range="{{exhibitors}}">
+    <view wx:if="meeting_name" class="picker">
+        {{meeting_name}}
+    </view>
+    <view wx:else class="picker">
+        {{exhibitors[exhibitorsIndex]}}
+    </view>
+    <image class="icon-drop-down" src="../../images/icon-dropDown.png" alt=""></image>
+</picker>
+
+<picker class="picker-container" bindchange="pickeDate" mode="selector" value="{{dateIndex}}" range="{{date}}">
+    <view class="picker">
+        {{date[dateIndex]}}
+    </view>
+    <image class="icon-drop-down" src="../../images/icon-dropDown.png" alt=""></image>
+</picker>
+
+<picker class="picker-container" bindchange="pickeTime" mode="selector" value="{{timeIndex}}" range="{{time}}">
+    <view class="picker">
+        {{time[timeIndex]}}
+    </view>
+    <image class="icon-drop-down" src="../../images/icon-dropDown.png" alt=""></image>
+</picker>
+
+<input class="form-input" bindinput="inputMeetingTheme" placeholder-class="form-input-placeholder"
+    placeholder="请输入会议标题…"></input>
+
+<input class="form-input" bindinput="inputMeetingContent" placeholder-class="form-input-placeholder"
+    placeholder="请输入会议内容…"></input>
+
+<input class="form-input" bindinput="sendMeetingName" placeholder-class="form-input-placeholder"
+    placeholder="您的姓名..."></input>
+
+<input class="form-input" bindinput="sendMeetingCompany" placeholder-class="form-input-placeholder"
+    placeholder="您的公司名称..."></input>
+
+<input class="form-input" bindinput="sendMeetingPhone" placeholder-class="form-input-placeholder"
+    placeholder="您的联系电话..."></input>
+
+<input class="form-input" bindinput="sendMeetingEmail" placeholder-class="form-input-placeholder"
+    placeholder="您的联系邮箱..."></input>
+
+<view>
+    <view class="meeting-btn" bindtap="sendMailToExhibitor">发出会议邀约</view>
+</view>

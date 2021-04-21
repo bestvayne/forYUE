@@ -1,0 +1,39 @@
+<!--pages/my/my.wxml-->
+<view class="page-container">
+    <!-- meeting card -->
+    <view class="card-container">
+        <!-- exhibitors image section -->
+        <view class="image-container">
+            <image class="image" src="https://7072-promote-iceland-5g1bnckvaac9cfc3-1305448055.tcb.qcloud.la/cloudbase-cms/upload/2021-03-31/1cauef6q4wom5d4ztvsoft3t12uwmjez_.png"  ></image>
+        </view>
+        
+        <!-- text section -->
+        <view class="exhibitor-info-container">
+            <!-- exhibitor name -->
+            <view>
+                <text class="exhibitors-name">Reykjavik Excursions 旅行社</text>
+                <view class="solid-black-3px"></view>
+            </view>
+           
+           <view class="exhibitor-info">
+                <view class="my-6">
+                    <view class="text-detail">会议主题: 冰岛旅游季阿斯顿发斯蒂芬是</view>
+                </view>
+                <view class="my-6">
+                    <view class="text-detail">会议日期: 2021.10.29</view>
+                </view>
+                <view class="my-6">
+                    <view class="text-detail">会议时间: 18:00~20:00</view>
+                </view>
+           </view>
+        
+        </view>
+
+        <!-- meeting status btn section -->
+        <view class="meeting-status-container">
+            <view class="meeting-status">
+                预约成功
+            </view>
+        </view>
+    </view>
+</view>
