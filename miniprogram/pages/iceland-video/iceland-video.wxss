@@ -23,8 +23,12 @@
     height: 100%;
 }
 
-.login-btn {
-    width: 40%;
+.login-btn{
+    background-color: #78A4BF;
+    color: #FFFFFF;
+    width: 300rpx;
+    font-size: 34rpx;
+    letter-spacing: 6rpx;
 }
 
 .login-tip-text {

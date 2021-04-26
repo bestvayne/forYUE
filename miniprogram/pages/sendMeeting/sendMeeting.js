@@ -9,8 +9,6 @@ Page({
      * 页面的初始数据
      */
     data: {
-        meetingToMail: '',
-        meetingToName: '',
         exhibitors:[
             '请选择邀约的参展商',
             "Gray Line",
@@ -154,49 +152,67 @@ Page({
         })
     },
 
-    sendMailToExhibitor: function () {
+    getMeetingExhibitorsThumbnail:function(){
         const _that = this
-
-        // create book meeting and add to DB
-        db.collection('book_meeting').add({
-            data:{
-                meeting_name:this.data.meeting_name,
-                meeting_email:this.data.meeting_email,
-                meeting_date:this.data.meeting_date,
-                meeting_time:this.data.meeting_time,
-                meeting_theme:this.data.meeting_theme,
-                meeting_content:this.data.meeting_content,
-                meeting_sponsor_name:this.data.send_meeting_name,
-                meeting_sponsor_company:this.data.send_meeting_company,
-                meeting_sponsor_phone:this.data.send_meeting_phone,
-                meeting_sponsor_email:this.data.send_meeting_email,
-                meeting_confirm_url: "http://172.104.97.44/#/?id=",
-                meeting_accept:false
-            }
-        }).then(res => {
-            // get this meeting info by _id
-            // add these info that send mail to exhibitor emaill
-            db.collection('book_meeting').doc( res._id ).get({}).then(res=>{
-                wx.cloud.callFunction({
-                    name:"sendEmail",
-                    data: {
-                        emailSubject: res.data.meeting_theme,
-                        emailAccepted: 'vanceyao0224@163.com',
-                        emailContent: res.data.meeting_content+res.data.meeting_confirm_url+res.data._id
-                    },
-                    success(res){
-                        wx.navigateTo({
-                            url: "/pages/landing/landing",
-                        })
-                    },
-                    fail(res){
-                        console.info(res)
-                    }
+        // get meeting exhibitors's thumbnail
+        db.collection('iceland_exhibitors').where({
+            iceland_exhibitors_name:this.data.meeting_name
+        }).get().then(res => {
+            _that.setData({
+                meeting_thumbnail:res.data[0].iceland_exhibitors_thumbnail
+            })
+        }).then(res=>{
+            // create book meeting and add to DB
+            db.collection('book_meeting').add({
+                data:{
+                    meeting_thumbnail:this.data.meeting_thumbnail,
+                    meeting_name:this.data.meeting_name,
+                    meeting_email:this.data.meeting_email,
+                    meeting_date:this.data.meeting_date,
+                    meeting_time:this.data.meeting_time,
+                    meeting_theme:this.data.meeting_theme,
+                    meeting_content:this.data.meeting_content,
+                    meeting_sponsor_name:this.data.send_meeting_name,
+                    meeting_sponsor_company:this.data.send_meeting_company,
+                    meeting_sponsor_phone:this.data.send_meeting_phone,
+                    meeting_sponsor_email:this.data.send_meeting_email,
+                    meeting_sponsor_openid:app.globalData.userOpenId,
+                    meeting_confirm_url: "http://172.104.97.44/#/?id=",
+                    meeting_accept:false,
+                }
+            }).then(res => {
+                // get this meeting info by _id
+                // add these info that send mail to exhibitor emaill
+                db.collection('book_meeting').doc( res._id ).get({}).then(res=>{
+                    wx.cloud.callFunction({
+                        name:"sendEmail",
+                        data: {
+                            emailSubject: res.data.meeting_theme,
+                            emailAccepted: 'vanceyao0224@163.com',
+                            emailContent: res.data.meeting_content+res.data.meeting_confirm_url+res.data._id
+                        },
+                        success(res){
+                            wx.showToast({
+                                title: '提交成功',
+                                image: '../../images/icon-happy.png',
+                                duration: 2000
+                            })
+                            // wx.navigateTo({
+                            //     url: "/pages/my/my",
+                            // })
+                        },
+                        fail(res){
+                            console.info(res)
+                        }
+                    })
                 })
             })
         })
+    },
 
-
+    sendMailToExhibitor: function () {
+        const _that = this
+        _that.getMeetingExhibitorsThumbnail()
     },
 
     /**
@@ -213,4 +229,19 @@ Page({
         })
     },
 
+    onShow:function(){
+        // get user openid by wx.cloud.callFunction()
+        wx.cloud.callFunction({
+            name: 'login',
+            success: res => {
+                app.globalData.userOpenId = res.result.openid
+                this.setData({
+                    userOpenId: res.result.openid
+                })
+            },
+            fail: err => {
+                console.error('Retrieve user openid failed: ', err)
+            }
+        })
+    }
 })

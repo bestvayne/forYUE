@@ -50,11 +50,11 @@
     </view>
 
     <!-- content image section -->
-    <view class="content-image-container">
+    <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_image_1 }}" class="content-image-container">
         <image class="content-image" src="{{ exhibitorsInfo.iceland_exhibitors_image_1 }}" alt="" mode="aspectFit">
         </image>
     </view>
-    <view class="content-image-container">
+    <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_image_2 }}" class="content-image-container">
         <image class="content-image" src="{{ exhibitorsInfo.iceland_exhibitors_image_2 }}" alt="" mode="aspectFit">
         </image>
     </view>
@@ -102,6 +102,16 @@
         </view>
     </view>
 
+    <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_email_2 }}" class="single-contact-container">
+        <view class="contact-content-container">
+            <image class="icon-contact" src="../../images/icon-email.png" mode="aspectFit"></image>
+            <text class="contact-text">{{ exhibitorsInfo.iceland_exhibitors_email_2 }}</text>
+        </view>
+        <view bindtap='copyText' data-text="{{ exhibitorsInfo.iceland_exhibitors_email_2 }}">
+            <image class="contact-content-arrow" src="../../images/exhibitor-arrow-right.png" mode="aspectFit"></image>
+        </view>
+    </view>
+
     <view class="single-contact-container" bindtap="callPhone">
         <view class="contact-content-container">
             <image class="icon-contact" src="../../images/icon-phone.png" mode="aspectFit"></image>
@@ -123,6 +133,7 @@
 </view>
 
 <view class="download-container">
+    <!-- file section -1 -->
     <view class="single-download-container">
         <view class="contact-content-container">
             <image class="icon-download" src="../../images/icon-file.png" mode="aspectFit"></image>
@@ -132,6 +143,18 @@
             <image class="contact-content-arrow" src="../../images/icon-download.png" mode="aspectFit"></image>
         </view>
     </view>
+
+    <!-- file section -2 -->
+    <view wx:if="{{exhibitorsInfo.iceland_exhibitors_download_name_2}}"  class="single-download-container">
+        <view class="contact-content-container">
+            <image class="icon-download" src="../../images/icon-file.png" mode="aspectFit"></image>
+            <text class="contact-text">{{ exhibitorsInfo.iceland_exhibitors_download_name_2 }}</text>
+        </view>
+        <view bindtap="downloadFile" data-fileCloud="{{ exhibitorsInfo.iceland_exhibitors_file_2 }}">
+            <image class="contact-content-arrow" src="../../images/icon-download.png" mode="aspectFit"></image>
+        </view>
+    </view>
+
     <view class="solid-balck-3px-20"></view>
 </view>
 
@@ -140,52 +163,55 @@
 <!-- socia section -->
 <view class="card-container">
     <view class="socia-card">
-        <block wx:if="{{ exhibitorsInfo.iceland_exhibitors_wechat_image }}">
-            <view class="wechat-container">
-                <image class="exhibitors-logo" src="{{ exhibitorsInfo.iceland_exhibitors_logo }}" alt="" mode="aspectFit">
+        <block>
+            <view class="exhibitors-logo-container" wx:if="{{ exhibitorsInfo.iceland_exhibitors_logo }}">
+                <image wx:if="{{ exhibitorsInfo.iceland_exhibitors_logo }}" class="exhibitors-logo" src="{{ exhibitorsInfo.iceland_exhibitors_logo }}" alt="" mode="aspectFit">
                 </image>
-                <text class="wechat-account-text">{{ exhibitorsInfo.iceland_exhibitors_wechat_title }}</text>
-                <text class="wechat-account-text">{{ exhibitorsInfo.iceland_exhibitors_wechat }}</text>
-                <image class="wechat-qr" src="{{ exhibitorsInfo.iceland_exhibitors_wechat_image }}" alt="" mode="aspectFit">
+            </view>
+            <view class="wechat-container">
+                <text wx:if="{{ exhibitorsInfo.iceland_exhibitors_wechat_image }}"class="wechat-account-text">{{ exhibitorsInfo.iceland_exhibitors_wechat_title }}</text>
+                <text wx:if="{{ exhibitorsInfo.iceland_exhibitors_wechat }}" class="wechat-account-text">{{ exhibitorsInfo.iceland_exhibitors_wechat }}</text>
+                <image wx:if="{{ exhibitorsInfo.iceland_exhibitors_wechat_image }}" class="wechat-qr" src="{{ exhibitorsInfo.iceland_exhibitors_wechat_image }}" alt="" mode="aspectFit">
                 </image>
             </view>
 
-            <view class="solid-balck-1px-90"></view>
+            <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_logo }}" class class="solid-balck-1px-90"></view>
 
         </block>
 
         <!-- socia icon section -->
         <view class="socia-list-container">
 
-            <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_weibo }}" class="single-socia-container">
-                <image class="socia-icon" src="../../images/icon-weibo.png" alt="" mode="aspectFit"></image>
-                <text class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_weibo }}</text>
-            </view>
-
             <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_web }}" class="single-socia-container">
                 <image class="socia-icon" src="../../images/icon-web.png" alt="" mode="aspectFit"></image>
-                <text class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_web }}</text>
+                <view class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_web }}</view>
             </view>
 
             <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_facebook }}" class="single-socia-container">
                 <image class="socia-icon" src="../../images/icon-facebook.png" alt="" mode="aspectFit"></image>
-                <text class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_facebook }}</text>
+                <view class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_facebook }}</view>
             </view>
 
             <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_ins }}" class="single-socia-container">
                 <image class="socia-icon" src="../../images/icon-ins.png" alt="" mode="aspectFit"></image>
-                <text class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_ins }}</text>
+                <view class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_ins }}</view>
             </view>
 
             <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_linkedin }}" class="single-socia-container">
                 <image class="socia-icon" src="../../images/icon-linkedin.png" alt="" mode="aspectFit"></image>
-                <text class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_linkedin }}</text>
+                <view class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_linkedin }}</view>
             </view>
 
             <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_youtube }}" class="single-socia-container">
                 <image class="socia-icon" src="../../images/icon-youtube.png" alt="" mode="aspectFit"></image>
-                <text class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_youtube }}</text>
+                <view class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_youtube }}</view>
             </view>
+
+            <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_weibo }}" class="single-socia-container">
+                <image class="socia-icon" src="../../images/icon-weibo.png" alt="" mode="aspectFit"></image>
+                <view class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_weibo }}</view>
+            </view>
+
         </view>
     </view>
 </view>

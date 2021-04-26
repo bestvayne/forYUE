@@ -90,7 +90,6 @@ Page({
 
 
     onGetUserInfo: function (e) {
-        console.log(e)
         var _that = this;
 
         if (!_that.data.logged && e.detail.userInfo) {
@@ -109,7 +108,6 @@ Page({
 
     // get user input message
     getReadyMessage: function (e) {
-        console.log(e.detail.value)
         this.setData({
             readyMessage: e.detail.value
         })

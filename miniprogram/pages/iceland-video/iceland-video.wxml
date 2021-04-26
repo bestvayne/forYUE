@@ -9,7 +9,7 @@
     <view class="chat-container" style="height:{{ (windowHeight - windowHeight/3) }}px">
         <!-- if user not login -->
         <view wx:if="{{!userOpenId}}" class="not-login-container">
-            <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile">登录</button>
+            <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile" class="login-btn">登录</button>
             <text class="login-tip-text">登录即可查看留言</text>
         </view>
 

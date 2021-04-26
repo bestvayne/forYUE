@@ -1,39 +1,54 @@
 <!--pages/my/my.wxml-->
-<view class="page-container">
-    <!-- meeting card -->
-    <view class="card-container">
-        <!-- exhibitors image section -->
-        <view class="image-container">
-            <image class="image" src="https://7072-promote-iceland-5g1bnckvaac9cfc3-1305448055.tcb.qcloud.la/cloudbase-cms/upload/2021-03-31/1cauef6q4wom5d4ztvsoft3t12uwmjez_.png"  ></image>
-        </view>
-        
-        <!-- text section -->
-        <view class="exhibitor-info-container">
-            <!-- exhibitor name -->
-            <view>
-                <text class="exhibitors-name">Reykjavik Excursions 旅行社</text>
-                <view class="solid-black-3px"></view>
-            </view>
-           
-           <view class="exhibitor-info">
-                <view class="my-6">
-                    <view class="text-detail">会议主题: 冰岛旅游季阿斯顿发斯蒂芬是</view>
-                </view>
-                <view class="my-6">
-                    <view class="text-detail">会议日期: 2021.10.29</view>
-                </view>
-                <view class="my-6">
-                    <view class="text-detail">会议时间: 18:00~20:00</view>
-                </view>
-           </view>
-        
-        </view>
+<view wx:if="{{!userOpenId}}" class="not-login-container" style="height:{{windowHeight}}px">
+    <button bindtap="onGetOpenidAndGetMeetingInfo" class="login-btn">登录</button>
+    <text class="login-tip-text">登录查看预约详情</text>
+</view>
 
-        <!-- meeting status btn section -->
-        <view class="meeting-status-container">
-            <view class="meeting-status">
-                预约成功
+
+<view wx:else class="page-container">
+
+    <!-- meeting card -->
+    <block wx:for="{{meetingList}}" wx:key="_id" wx:for-index="_id" wx:for-item="meeting">
+        <view class="card-container">
+            <!-- exhibitors image section -->
+            <view class="image-container">
+                <image class="image"
+                    src="{{meeting.meeting_thumbnail}}">
+                </image>
+            </view>
+
+            <!-- text section -->
+            <view class="exhibitor-info-container">
+                <!-- exhibitor name -->
+                <view>
+                    <text class="exhibitors-name">{{ meeting.meeting_name }}</text>
+                    <view class="solid-black-3px"></view>
+                </view>
+
+                <view class="exhibitor-info">
+                    <view class="my-6">
+                        <view class="text-detail">会议主题: {{ meeting.meeting_theme }}</view>
+                    </view>
+                    <view class="my-6">
+                        <view class="text-detail">会议日期: {{ meeting.meeting_date }}</view>
+                    </view>
+                    <view class="my-6">
+                        <view class="text-detail">会议时间: {{ meeting.meeting_time }}</view>
+                    </view>
+                </view>
+
+            </view>
+
+            <!-- meeting status btn section -->
+            <view class="meeting-status-container">
+                <view wx:if="{{meeting.meeting_accept}}" class="meeting-success">
+                    预约成功
+                </view>
+                <view wx:else class="meeting-wait">
+                    等待确认
+                </view>
             </view>
         </view>
-    </view>
+    </block>
+
 </view>

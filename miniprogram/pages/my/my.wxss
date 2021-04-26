@@ -1,8 +1,36 @@
 .page-container {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     background: #F1F1F1;
+}
+.not-login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+.login-btn{
+    background-color: #78A4BF;
+    color: #FFFFFF;
+    width: 300rpx;
+    font-size: 34rpx;
+    letter-spacing: 6rpx;
+}
+.login-tip-text {
+    width: 70%;
+    height: 80rpx;
+    color: #D2D2D2;
+    background-color: #F4F4F4;
+    opacity: 0.8;
+    font-size: 28rpx;
+    letter-spacing: 0.6rpx;
+    padding-left: 10rpx;
+    margin: 30rpx 20rpx;
+    text-align: center;
 }
 
 .card-container {
@@ -12,7 +40,7 @@
     letter-spacing: 0;
     width: 90%;
     height: 280rpx;
-    margin-top: 80rpx;
+    margin-top: 40rpx;
     display: flex;
     align-items: center;
     padding: 20rpx;
@@ -75,7 +103,7 @@
     width: 20%;
 }
 
-.meeting-status{
+.meeting-success{
     background: #78A4BF;
     font-size: 24rpx;
     font-weight: 500;
@@ -83,4 +111,14 @@
     letter-spacing: 0.3px;
     text-align: center;
     padding: 10rpx;
+}
+
+.meeting-wait{
+    font-size: 24rpx;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    text-align: center;
+    padding: 10rpx;
+    border: 1px solid #78A4BF;
+    color: #78A4BF;
 }

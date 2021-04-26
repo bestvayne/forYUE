@@ -249,7 +249,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10rpx 0;
+    margin: 30rpx 0;
 }
 
 .icon-download {
@@ -285,12 +285,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 30px;
+}
+
+.exhibitors-logo-container{
+    width: 100%;
+    /* height: 400rpx; */
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .exhibitors-logo {
     width: 220rpx;
     height: 180rpx;
-    margin: 60rpx 0;
+    margin-top: 60rpx;
+    margin-bottom: 30rpx;
 }
 
 .wechat-account-text {
@@ -318,23 +329,27 @@
 .solid-balck-1px-90 {
     width: 90%;
     border: 1px solid #373D40;
-    margin-top: 30px;
 }
 
 .socia-list-container {
     width: 100%;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-around;
     margin-bottom: 150rpx;
-    margin-top: 40rpx;
+    margin-top: 20rpx;
+    flex-wrap: wrap;
 }
 
 .single-socia-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 20rpx;
+    width: 30%;
+    padding: 0 10rpx;
+    word-wrap:break-word; 
+    /* word-break:break-all; */
 }
 
 .socia-icon {

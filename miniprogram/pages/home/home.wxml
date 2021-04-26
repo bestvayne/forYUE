@@ -33,7 +33,7 @@
                 </navigator>
             </view>
             <view class="icon-container">
-                <navigator url="" class="nav-style">
+                <navigator url="/pages/my/my" class="nav-style">
                     <image class="icon" src="../../images/meeting.png" alt="Promote Iceland Meeting"></image>
                     <text class="icon-text">预约会议</text>
                 </navigator>
@@ -51,7 +51,7 @@
             <navigator url="/pages/exhibitor-list/exhibitor-list" class="card">
                 <image class="card-bg" src="https://7072-promote-iceland-5g1bnckvaac9cfc3-1305448055.tcb.qcloud.la/promote-Iceland/home-about-exhibitors.png?sign=09abeff10225f23697238584bcc5a7e3&t=1617206694"></image>
             </navigator>
-            <navigator class="card">
+            <navigator url="/pages/my/my"  class="card">
                 <image class="card-bg" src="https://7072-promote-iceland-5g1bnckvaac9cfc3-1305448055.tcb.qcloud.la/promote-Iceland/home-book-meeting.png?sign=aa86617ebf81c79442e456cc24ea52c7&t=1617206706"></image>
             </navigator>
     </view>

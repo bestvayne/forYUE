@@ -17,7 +17,6 @@ Page({
 
 	// 点击 展示/收起 介绍文字
 	textIsShow: function () {
-		console.log(this.data.text_isShow)
 		this.setData({
 			text_isShow: !this.data.text_isShow,
 		})
@@ -25,7 +24,6 @@ Page({
 
 	// 点击复制文本内容
 	copyText: function (e) {
-		console.log(e)
 		wx.setClipboardData({
 			data: e.currentTarget.dataset.text,
 			success: function (res) {
@@ -68,19 +66,18 @@ Page({
 	},
 
 	goToSendMeeting: function (e) {
-        const _that = this
+		const _that = this
 		const email = _that.data.exhibitorsInfo.iceland_exhibitors_email
-        const exhibitorName = _that.data.exhibitorsInfo.iceland_exhibitors_name
-		console.log(email,exhibitorName)
-        wx.navigateTo({
-            url: '/pages/sendMeeting/sendMeeting',
-            success: function (res) {
-                res.eventChannel.emit('sendData', {
+		const exhibitorName = _that.data.exhibitorsInfo.iceland_exhibitors_name
+		wx.navigateTo({
+			url: '/pages/sendMeeting/sendMeeting',
+			success: function (res) {
+				res.eventChannel.emit('sendData', {
 					email: email,
 					exhibitorName: exhibitorName
-                })
-            }
-        })
+				})
+			}
+		})
     },
 
 
@@ -91,7 +88,6 @@ Page({
 		var _that = this
 		const eventChannel = _that.getOpenerEventChannel()
 		eventChannel.on('sendData', function (res) {
-			console.log(res)
 			// get exhibitor-list page send date _id
 			// query this date by res.exhibitors
 			db.collection('iceland_exhibitors').where({

@@ -15,7 +15,7 @@ Page({
      */
     onLoad: function (options) {
         const _that = this
-        db.collection('iceland_exhibitors').limit(10).get().then(res => {
+        db.collection('iceland_exhibitors').limit(15).get().then(res => {
             res.data.forEach(exhibitors => {
                 exhibitors.iceland_exhibitors_des = exhibitors.iceland_exhibitors_des.replace(/<[^<>]+>/g,'')
             })
@@ -28,7 +28,6 @@ Page({
     goToExhibitors: function (e) {
         const _that = this
         const clickExhibitorsId = e.currentTarget.dataset._id
-        console.log(clickExhibitorsId)
         wx.navigateTo({
             url: '/pages/exhibitor/exhibitor',
             success: function (res) {
