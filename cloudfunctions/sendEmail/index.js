@@ -27,11 +27,11 @@ exports.main = async (event, context) => {
     // 发件人
     from: 'promote_iceland@163.com',
     // 主题
-    subject: event.emailSubject,
+    subject: "Promote Iceland " + event.emailSubject,
     // 收件人
     to: event.emailAccepted,
     // 邮件内容，text或者html格式
-    text: event.emailContent, 
+    html: "<p>You have a meeting invitation from Promote Iceland, please click the link to view the details：</p>"+"<a href="+event.emailContent+">Meeting link</a>", 
   };
 
   let res = await transporter.sendMail(mail);

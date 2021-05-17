@@ -112,7 +112,15 @@
     text-align: center;
     padding: 10rpx;
 }
-
+.meeting-fail{
+    background: #FF4F00;
+    font-size: 24rpx;
+    font-weight: 500;
+    color: #FFFFFF;
+    letter-spacing: 0.3px;
+    text-align: center;
+    padding: 10rpx;
+}
 .meeting-wait{
     font-size: 24rpx;
     font-weight: 500;

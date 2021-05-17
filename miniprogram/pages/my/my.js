@@ -7,16 +7,20 @@ Page({
      * 页面的初始数据
      */
     data: {
-        meetingList:''
+        meetingList:'',
+        userOpenId:'',
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
+        const _that = this
+        _that.onGetOpenidAndGetMeetingInfo()
+        _that.data.userOpenId = app.globalData.userOpenId
         wx.getSystemInfo({
             success: (result) => {
-                this.setData({
+                _that.setData({
                     windowHeight: result.windowHeight
                 })
             },
@@ -60,20 +64,8 @@ Page({
      */
     onShow: function () {
         const _that = this
-
-        if (app.globalData.userOpenId) {
-            db.collection('book_meeting').where({
-                meeting_sponsor_openid : app.globalData.userOpenId
-            }).get({}).then(res =>{
-                console.info(res.data)
-                // get target openid user' book meeting data
-                _that.setData({
-                    meetingList:res.data
-                })
-            })
-        }else{
-            _that.onGetOpenidAndGetMeetingInfo()
-        }
+        _that.onGetOpenidAndGetMeetingInfo()
+        _that.data.userOpenId = app.globalData.userOpenId
     },
 
     /**
