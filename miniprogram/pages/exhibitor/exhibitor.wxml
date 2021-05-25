@@ -42,6 +42,11 @@
         <video class="video" src="{{ exhibitorsInfo.iceland_exhibitors_video }}"></video>
     </view>
 
+    <!-- video-2 section -->
+    <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_video_2 }}" class="exhibitors-video-container">
+        <video class="video" src="{{ exhibitorsInfo.iceland_exhibitors_video_2 }}"></video>
+    </view>
+
 <!-- isShow section -->
 <view class="{{ text_isShow ? 'text-isShow-section-container':'text-isHidden-section-container' }}">
     <!-- text -1 section -->
@@ -108,6 +113,16 @@
             <text class="contact-text">{{ exhibitorsInfo.iceland_exhibitors_email_2 }}</text>
         </view>
         <view bindtap='copyText' data-text="{{ exhibitorsInfo.iceland_exhibitors_email_2 }}">
+            <image class="contact-content-arrow" src="../../images/exhibitor-arrow-right.png" mode="aspectFit"></image>
+        </view>
+    </view>
+
+    <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_email_3 }}" class="single-contact-container">
+        <view class="contact-content-container">
+            <image class="icon-contact" src="../../images/icon-email.png" mode="aspectFit"></image>
+            <text class="contact-text">{{ exhibitorsInfo.iceland_exhibitors_email_3 }}</text>
+        </view>
+        <view bindtap='copyText' data-text="{{ exhibitorsInfo.iceland_exhibitors_email_3 }}">
             <image class="contact-content-arrow" src="../../images/exhibitor-arrow-right.png" mode="aspectFit"></image>
         </view>
     </view>
@@ -210,6 +225,16 @@
             <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_weibo }}" class="single-socia-container">
                 <image class="socia-icon" src="../../images/icon-weibo.png" alt="" mode="aspectFit"></image>
                 <view class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_weibo }}</view>
+            </view>
+            
+            <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_facebook_2 }}" class="single-socia-container">
+                <image class="socia-icon" src="../../images/icon-facebook.png" alt="" mode="aspectFit"></image>
+                <view class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_facebook_2 }}</view>
+            </view>
+
+            <view wx:if="{{ exhibitorsInfo.iceland_exhibitors_ins_2 }}" class="single-socia-container">
+                <image class="socia-icon" src="../../images/icon-ins.png" alt="" mode="aspectFit"></image>
+                <view class="socia-name">{{ exhibitorsInfo.iceland_exhibitors_ins_2 }}</view>
             </view>
 
         </view>

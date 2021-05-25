@@ -4,14 +4,6 @@
 const app = getApp();
 const db = app.globalData.db
 
-const test = (setting) => () => {
-    return new Promise((resolve, reject) => {
-        console.log(1)
-    }).then(res=>{
-        console.log(2)
-    })
-  }
-
 Page({
 
     /**
@@ -205,7 +197,7 @@ Page({
                     meeting_sponsor_email:this.data.send_meeting_email,
                     meeting_sponsor_openid:app.globalData.userOpenId,
                     meeting_confirm_url: "http://172.104.97.44/#/?id=",
-                    meeting_accept:false,
+                    meeting_status:"wait"
                 }
             }).then(res => {
                 let currentMeetingId = res._id
@@ -216,7 +208,7 @@ Page({
                         name:"sendEmail",
                         data: {
                             emailSubject: res.data.meeting_theme,
-                            emailAccepted: 'lindsay.li@plus8h.com',
+                            emailAccepted: 'vanceyax@163.com',
                             emailContent: res.data.meeting_confirm_url+res.data._id
                         },
                         success(res){
