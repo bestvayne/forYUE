@@ -172,15 +172,22 @@ Page({
     },
 
     getMeetingExhibitorsThumbnail:function(){
-        const _that = this
-        // get meeting exhibitors's thumbnail
-        db.collection('iceland_exhibitors').where({
-            iceland_exhibitors_name:this.data.meeting_name
-        }).get().then(res => {
-            _that.setData({
-                meeting_thumbnail:res.data[0].iceland_exhibitors_thumbnail
+        return new Promise(resolve=>{
+            const _that = this
+            // get meeting exhibitors's thumbnail
+            db.collection('iceland_exhibitors').where({
+                iceland_exhibitors_name:this.data.meeting_name
+            }).get().then(res => {
+                _that.setData({
+                    meeting_thumbnail:res.data[0].iceland_exhibitors_thumbnail
+                })
+                resolve(res.data[0].iceland_exhibitors_id)
             })
-        }).then(res=>{
+        })
+    },
+
+    createBookingMeetingToDB:function(){
+        return new Promise(resolve=>{
             // create book meeting and add to DB
             db.collection('book_meeting').add({
                 data:{
@@ -199,121 +206,60 @@ Page({
                     meeting_confirm_url: "http://172.104.97.44/#/?id=",
                     meeting_status:"wait"
                 }
-            }).then(res => {
-                let currentMeetingId = res._id
-                // get this meeting info by _id
-                // add these info that send mail to exhibitor email
-                db.collection('book_meeting').doc( res._id ).get({}).then(res=>{
-                    wx.cloud.callFunction({
-                        name:"sendEmail",
-                        data: {
-                            emailSubject: res.data.meeting_theme,
-                            emailAccepted: 'vanceyax@163.com',
-                            emailContent: res.data.meeting_confirm_url+res.data._id
-                        },
-                        success(res){
-                            wx.hideLoading()
-                            wx.showToast({
-                                title: '提交成功',
-                                image: '../../images/icon-happy.png',
-                                duration: 2000,
-                                success:function(){
-                                    wx.navigateTo({
-                                        url: "/pages/my/my",
-                                    })
-                                }
-                            })
-
-                        },
-                        fail(res){
-                            // if this email send fail,delete this data form DB
-                            console.info(res._id)
-                            console.info(currentMeetingId)
-                            db.collection('book_meeting').doc(currentMeetingId).remove({
-                                success:function(i){
-                                    console.log(i)
-                                }
-                            })
-                        }
-                    })
-                })
+            }).then(res=>{
+                resolve(res._id)
             })
         })
     },
 
-    // getMeetingExhibitorsThumbnail:function(){
-    //     const _that = this
-    //     // get meeting exhibitors's thumbnail
-    //     db.collection('iceland_exhibitors').where({
-    //         iceland_exhibitors_name:this.data.meeting_name
-    //     }).get().then(res => {
-    //         _that.setData({
-    //             meeting_thumbnail:res.data[0].iceland_exhibitors_thumbnail
-    //         })
-    //     })
-    // },
+    getMeetingInfo:function(dbName,dataId){
+        // get meeting info by id
+        // set some mail message by this meeting info and send mail
+        db.collection(dbName).doc( dataId ).get({}).then(res=>{
+            wx.cloud.callFunction({
+                name:"sendEmail",
+                data: {
+                    emailSubject: res.data.meeting_theme,
+                    emailAccepted: 'lindsay.li@plus8h.com',
+                    emailContent: res.data.meeting_confirm_url+res.data._id
+                },
+                success(res){
+                    wx.hideLoading()
+                    wx.showToast({
+                        title: '提交成功',
+                        image: '../../images/icon-happy.png',
+                        duration: 2000,
+                        success:function(){
+                            wx.navigateTo({
+                                url: "/pages/my/my",
+                            })
+                        }
+                    })
 
-    // addBookMeetingToDB:function(){
-    //     // create book meeting and add to DB
-    //     db.collection('book_meeting').add({
-    //         data:{
-    //             meeting_thumbnail:this.data.meeting_thumbnail,
-    //             meeting_name:this.data.meeting_name,
-    //             meeting_email:this.data.meeting_email,
-    //             meeting_date:this.data.meeting_date,
-    //             meeting_time:this.data.meeting_time,
-    //             meeting_theme:this.data.meeting_theme,
-    //             meeting_content:this.data.meeting_content,
-    //             meeting_sponsor_name:this.data.send_meeting_name,
-    //             meeting_sponsor_company:this.data.send_meeting_company,
-    //             meeting_sponsor_phone:this.data.send_meeting_phone,
-    //             meeting_sponsor_email:this.data.send_meeting_email,
-    //             meeting_sponsor_openid:app.globalData.userOpenId,
-    //             meeting_confirm_url: "http://172.104.97.44/#/?id=",
-    //             meeting_accept:false,
-    //         }
-    //     })
-    //     .then(res => {
-    //         // get this meeting info by _id
-    //         // add these info that send mail to exhibitor email
-    //         db.collection('book_meeting').doc( res._id ).get({}).then(res=>{
-    //             wx.cloud.callFunction({
-    //                 name:"sendEmail",
-    //                 data: {
-    //                     emailSubject: res.data.meeting_theme,
-    //                     emailAccepted: 'vanceyao0224@163.com',
-    //                     emailContent: res.data.meeting_confirm_url+res.data._id
-    //                 },
-    //                 success(res){
-    //                     wx.showToast({
-    //                         title: '提交成功',
-    //                         image: '../../images/icon-happy.png',
-    //                         duration: 2000
-    //                     })
-    //                     // wx.navigateTo({
-    //                     //     url: "/pages/my/my",
-    //                     // })
-    //                 },
-    //                 fail(res){
-    //                     console.info(res)
-    //                 }
-    //             })
-    //         })
-    //     })
-    // },
+                },
+                fail(res){
+                    // if this email send fail,delete this data form DB
+                    console.info(res._id)
+                    console.info(res._id)
+                    db.collection('book_meeting').doc(res._id).remove({
+                        success:function(i){
+                            console.log(i)
+                        }
+                    })
+                }
+            })
+        })
+    },
 
-    sendMailToExhibitor: function () {
+    sendMailToExhibitor: async function () {
         wx.showLoading({
             title: '发送中',
         })
         const _that = this
-        _that.getMeetingExhibitorsThumbnail()
-        // new Promise((resolve,reject)=>{
-        //     _that.getMeetingExhibitorsThumbnail()
-        //     resolve()
-        // }).then(res=>{
-        //     _that.addBookMeetingToDB()
-        // })
+        await this.getMeetingExhibitorsThumbnail();
+        await this.createBookingMeetingToDB().then(res=>{
+            this.getMeetingInfo('book_meeting',res)
+        });
     },
 
 
