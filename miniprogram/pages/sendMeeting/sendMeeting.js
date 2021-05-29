@@ -111,28 +111,63 @@ Page({
     },
 
     pickerExhibitors:function(e){
-        console.log('picker发送选择改变，携带值为', e.detail.value)
-        this.setData({
-            exhibitorsIndex: e.detail.value,
+        // console.log('picker发送选择改变，携带值为', e.detail.value)
+        db.collection("book_meeting").where({
+            _openid: this.data.userOpenId,
             meeting_name: this.data.exhibitorsList[e.detail.value].name,
-            meeting_email: this.data.exhibitorsList[e.detail.value].email
+        }).get().then(res=>{
+            console.log(this.data.userOpenId)
+            console.log(this.data.exhibitorsList[e.detail.value].name)
+            console.log(res)
+            if(res.data.length > 0){
+                wx.showModal({
+                    title: '友情提示',
+                    content: '您已经预约过 '+ this.data.exhibitorsList[e.detail.value].name,
+                    showCancel:false,
+                    success (res) {
+                        if (res.confirm) {
+                            wx.navigateBack()
+                        } 
+                    }
+                })
+            }else{
+                this.setData({
+                    exhibitorsIndex: e.detail.value,
+                    meeting_name: this.data.exhibitorsList[e.detail.value].name,
+                    meeting_email: this.data.exhibitorsList[e.detail.value].email
+                })
+            }
         })
     },
 
-    pickeDate:function(e){
-        console.log('picker发送选择改变，携带值为', e.detail.value)
-        this.setData({
-            dateIndex: e.detail.value,
-            meeting_date: this.data.dateList[e.detail.value].name
-        })
+    pickeDate: function(e){
+        // console.log('picker发送选择改变，携带值为', e.detail.value)
+        if(e.detail.value != 0){
+            this.setData({
+                dateIndex: e.detail.value,
+                meeting_date: this.data.dateList[e.detail.value].name
+            })
+        }else{
+            this.setData({
+                dateIndex: 0,
+                meeting_date: undefined
+            })
+        }
     },
 
     pickeTime:function(e){
-        console.log('picker发送选择改变，携带值为', e.detail.value)
-        this.setData({
-            timeIndex: e.detail.value,
-            meeting_time: this.data.timeList[e.detail.value].name
-        })
+        // console.log('picker发送选择改变，携带值为', e.detail.value)
+        if(e.detail.value != 0){
+            this.setData({
+                timeIndex: e.detail.value,
+                meeting_time: this.data.timeList[e.detail.value].name
+            })
+        }else{
+            this.setData({
+                timeIndex: 0,
+                meeting_time: undefined
+            })
+        }
     },
 
     inputMeetingTheme:function(e){
@@ -169,6 +204,14 @@ Page({
         this.setData({
             send_meeting_email: e.detail.value
         })
+    },
+
+    verifyFormDate: async function(e){
+        const verifyResult = await e.every(x => typeof(x)==="string")
+        // if (verifyResult){
+        //     resolve([this.data.meeting_name,this.data.meeting_date])
+        // }
+        return verifyResult
     },
 
     getMeetingExhibitorsThumbnail:function(){
@@ -252,17 +295,45 @@ Page({
     },
 
     sendMailToExhibitor: async function () {
-        wx.showLoading({
-            title: '发送中',
-        })
-        const _that = this
-        await this.getMeetingExhibitorsThumbnail();
-        await this.createBookingMeetingToDB().then(res=>{
-            this.getMeetingInfo('book_meeting',res)
-        });
+        let verifyForm = [
+            this.data.meeting_name,
+            this.data.meeting_email,
+            this.data.meeting_date,
+            this.data.meeting_time,
+            this.data.meeting_theme,
+            this.data.meeting_content,
+            this.data.send_meeting_name,
+            this.data.send_meeting_company,
+            this.data.send_meeting_phone,
+            this.data.send_meeting_email,
+        ]
+        // if(this.verifyFormDate(verifyForm)){
+        //     wx.showLoading({
+        //         title: '发送中',
+        //     })
+        //     const _that = this
+        //     await this.getMeetingExhibitorsThumbnail();
+        //     await this.createBookingMeetingToDB().then(res=>{
+        //         this.getMeetingInfo('book_meeting',res)
+        //     });
+        // }else{
+        //     wx.showToast({
+        //         title: '请完整填写表单',
+        //         image: '../../images/icon-error.png',
+        //         duration: 2000,
+        //     })
+        // }
+        this.verifyFormDate(verifyForm).then(res=>console.log("res 是: "+res))
     },
 
+    getUserOpenId:async function(){
 
+    },
+
+    checkMeetingByUserId:async function(dbName,userOpenId){
+        console.log(this.data.userOpenId)
+
+    },
 
     /**
      * 生命周期函数--监听页面加载
@@ -278,7 +349,9 @@ Page({
         })
     },
 
-    onShow:function(){
+
+
+    onShow:async function(){
         // get user openid by wx.cloud.callFunction()
         wx.cloud.callFunction({
             name: 'login',
@@ -287,10 +360,29 @@ Page({
                 this.setData({
                     userOpenId: res.result.openid
                 })
+                // Judging whether the current user has reserved the exhibitor
+                db.collection("book_meeting").where({
+                    _openid: res.result.openid,
+                    meeting_name: this.data.meeting_name,
+                }).get().then(res=>{
+                    if(res.data.length > 0){
+                        wx.showModal({
+                            title: '友情提示',
+                            content: '您已经预约过 '+ this.data.meeting_name,
+                            showCancel:false,
+                            success (res) {
+                                if (res.confirm) {
+                                    wx.navigateBack()
+                                } 
+                            }
+                        })
+                    }
+                })
             },
             fail: err => {
                 console.error('Retrieve user openid failed: ', err)
             }
         })
+
     }
 })
