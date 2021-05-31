@@ -12,8 +12,8 @@ Page({
     data: {
         exhibitors:[
             '请选择邀约的参展商',
-            "Gray Line",
-            "Terry Nova",
+            "Grayline Iceland",
+            "Terra Nova",
             "Reykjavik Excursions",
             "Nonni Travel",
             "Iceland Europe Travel",
@@ -27,12 +27,12 @@ Page({
             },
             {
                 id:1,
-                name:'Gray Line',
-                email:"iceland@grayline.is"
+                name: "Grayline Iceland",
+                email: "iceland@grayline.is"
             },
             {
                 id:2,
-                name:'Terry Nova',
+                name:'Terra Nova',
                 email:"anton@terranova.is"
             },
             {
@@ -64,24 +64,7 @@ Page({
             "4月22日",
         ],
         dateIndex:0,
-        dateList:[
-            {
-                id:0,
-                name:'请选择预约日期'
-            },
-            {
-                id:1,
-                name:'4月20日'
-            },
-            {
-                id:2,
-                name:'4月21日'
-            },
-            {
-                id:3,
-                name:'4月22日'
-            }
-        ],
+        dateList:[],
 
         time:[
             '请选择预约时段',
@@ -112,6 +95,8 @@ Page({
 
     pickerExhibitors:function(e){
         // console.log('picker发送选择改变，携带值为', e.detail.value)
+
+        // Determine whether the current user has booked the exhibitors
         db.collection("book_meeting").where({
             _openid: this.data.userOpenId,
             meeting_name: this.data.exhibitorsList[e.detail.value].name,
@@ -119,6 +104,11 @@ Page({
             console.log(this.data.userOpenId)
             console.log(this.data.exhibitorsList[e.detail.value].name)
             console.log(res)
+
+            // display UI => meeting name
+            this.setData({
+                meeting_name: this.data.exhibitorsList[e.detail.value].name,
+            })
             if(res.data.length > 0){
                 wx.showModal({
                     title: '友情提示',
@@ -126,7 +116,7 @@ Page({
                     showCancel:false,
                     success (res) {
                         if (res.confirm) {
-                            wx.navigateBack()
+                            console.log("user click confirm button")
                         } 
                     }
                 })
@@ -136,6 +126,26 @@ Page({
                     meeting_name: this.data.exhibitorsList[e.detail.value].name,
                     meeting_email: this.data.exhibitorsList[e.detail.value].email
                 })
+            }
+        })
+
+
+        // get valid date and set this page data
+        db.collection("book_meeting").where({
+            meeting_name: this.data.exhibitorsList[e.detail.value].name,
+        }).get().then(res=>{
+            // get this exhibitors has meeting_date
+            let currentExhibitorsMeeingDate = res.data.map(x=>{return x.meeting_date})
+
+            this.setData({
+                date:this.getUseDate(this.data.date,currentExhibitorsMeeingDate)
+            })
+            
+            // set this data => dateList by this.date
+            for(let i=0; i<this.data.date.length; i++){
+                this.data.dateList[i]={}
+                this.data.dateList[i].id = i
+                this.data.dateList[i].name = this.data.date[i]
             }
         })
     },
@@ -283,7 +293,6 @@ Page({
                 fail(res){
                     // if this email send fail,delete this data form DB
                     console.info(res._id)
-                    console.info(res._id)
                     db.collection('book_meeting').doc(res._id).remove({
                         success:function(i){
                             console.log(i)
@@ -326,18 +335,12 @@ Page({
         this.verifyFormDate(verifyForm).then(res=>console.log("res 是: "+res))
     },
 
-    getUserOpenId:async function(){
-
+    getUseDate:function (arr1, arr2) {
+        return arr1.concat(arr2).filter(function(v, i, arr) {
+            return arr.indexOf(v) === arr.lastIndexOf(v);
+        });
     },
 
-    checkMeetingByUserId:async function(dbName,userOpenId){
-        console.log(this.data.userOpenId)
-
-    },
-
-    /**
-     * 生命周期函数--监听页面加载
-     */
     onLoad: function (options) {
         const _that = this
         const eventChannel = _that.getOpenerEventChannel()
@@ -349,9 +352,7 @@ Page({
         })
     },
 
-
-
-    onShow:async function(){
+    onShow:function(){
         // get user openid by wx.cloud.callFunction()
         wx.cloud.callFunction({
             name: 'login',
@@ -381,8 +382,26 @@ Page({
             },
             fail: err => {
                 console.error('Retrieve user openid failed: ', err)
-            }
+            },
         })
 
+        // get valid date and set this page data
+        db.collection("book_meeting").where({
+            meeting_name: this.data.meeting_name,
+        }).get().then(res=>{
+            // get this exhibitors has meeting_date
+            let currentExhibitorsMeeingDate = res.data.map(x=>{return x.meeting_date})
+
+            this.setData({
+                date:this.getUseDate(this.data.date,currentExhibitorsMeeingDate)
+            })
+            
+            // set this data => dateList by this.date
+            for(let i=0; i<this.data.date.length; i++){
+                this.data.dateList[i]={}
+                this.data.dateList[i].id = i
+                this.data.dateList[i].name = this.data.date[i]
+            }
+        })
     }
 })
