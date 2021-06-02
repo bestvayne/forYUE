@@ -57,11 +57,18 @@ Page({
             }
         ],
 
+        dateTemplete:[
+            '请选择预约日期',
+            "2021-04-20",
+            "2021-04-21",
+            "2021-04-22",
+        ],
+
         date:[
             '请选择预约日期',
-            "4月20日",
-            "4月21日",
-            "4月22日",
+            "2021-04-20",
+            "2021-04-21",
+            "2021-04-22",
         ],
         dateIndex:0,
         dateList:[],
@@ -93,19 +100,69 @@ Page({
         ],
     },
 
-    pickerExhibitors:function(e){
+    pickerExhibitors: function(e){
         // console.log('picker发送选择改变，携带值为', e.detail.value)
-
-        // Determine whether the current user has booked the exhibitors
+        
+        // get valid date and set this page data
         db.collection("book_meeting").where({
-            _openid: this.data.userOpenId,
+
+
+            /*
+            |--------------------------------------------------------------------------
+            |   @res	                            DB function callback value
+            |   @this.data.dateTemplete             page global variable
+            |   @currentExhibitorsMeeingDate        local variable
+            |--------------------------------------------------------------------------
+            |	get this exhibitors has meeting_date
+            | 
+            */ 
             meeting_name: this.data.exhibitorsList[e.detail.value].name,
         }).get().then(res=>{
-            console.log(this.data.userOpenId)
-            console.log(this.data.exhibitorsList[e.detail.value].name)
-            console.log(res)
 
-            // display UI => meeting name
+
+            /*
+            |--------------------------------------------------------------------------
+            |   @getUseDate()	                    function
+            |   @this.data.dateTemplete             page global variable
+            |   @currentExhibitorsMeeingDate        local variable
+            |--------------------------------------------------------------------------
+            |	
+            |   1.Get current exhibitors sas been reserved meeting date
+            |   2.Calculate the meeting date that the current exhibitors is not booked
+            |   3.set page data => dateList by this.date
+            |   !!! this setData function, I use this.data.dateTemplete data,
+            |   because use this.data.date will cause data update error
+            | 
+            */ 
+           let currentExhibitorsMeeingDate = res.data.map(x=>{return x.meeting_date})
+            this.setData({
+                date: this.getUseDate(this.data.dateTemplete,currentExhibitorsMeeingDate)
+            })
+            
+            for(let i=0; i<this.data.date.length; i++){
+                this.data.dateList[i]={}
+                this.data.dateList[i].id = i
+                this.data.dateList[i].name = this.data.date[i]
+            }
+        })
+
+
+        /*
+        |--------------------------------------------------------------------------
+        |   @meeting_sponsor_openid	            DB query value        
+        |   @meeting_name                       DB query value
+        |   @res.data                           judge condition
+        |--------------------------------------------------------------------------
+        |	
+        |   1.get current user open Id
+        |   2.get user selected exhibitors
+        |   3.according to 1 and 2, query DB => whether user has booked this exhibitors
+        | 
+        */ 
+        db.collection("book_meeting").where({
+            meeting_sponsor_openid: this.data.userOpenId,
+            meeting_name: this.data.exhibitorsList[e.detail.value].name,
+        }).get().then(res=>{
             this.setData({
                 meeting_name: this.data.exhibitorsList[e.detail.value].name,
             })
@@ -126,26 +183,6 @@ Page({
                     meeting_name: this.data.exhibitorsList[e.detail.value].name,
                     meeting_email: this.data.exhibitorsList[e.detail.value].email
                 })
-            }
-        })
-
-
-        // get valid date and set this page data
-        db.collection("book_meeting").where({
-            meeting_name: this.data.exhibitorsList[e.detail.value].name,
-        }).get().then(res=>{
-            // get this exhibitors has meeting_date
-            let currentExhibitorsMeeingDate = res.data.map(x=>{return x.meeting_date})
-
-            this.setData({
-                date:this.getUseDate(this.data.date,currentExhibitorsMeeingDate)
-            })
-            
-            // set this data => dateList by this.date
-            for(let i=0; i<this.data.date.length; i++){
-                this.data.dateList[i]={}
-                this.data.dateList[i].id = i
-                this.data.dateList[i].name = this.data.date[i]
             }
         })
     },
@@ -227,7 +264,6 @@ Page({
     getMeetingExhibitorsThumbnail:function(){
         return new Promise(resolve=>{
             const _that = this
-            // get meeting exhibitors's thumbnail
             db.collection('iceland_exhibitors').where({
                 iceland_exhibitors_name:this.data.meeting_name
             }).get().then(res => {
@@ -353,7 +389,18 @@ Page({
     },
 
     onShow:function(){
-        // get user openid by wx.cloud.callFunction()
+        /*
+        |--------------------------------------------------------------------------
+        |   @meeting_sponsor_openid	            DB query value        
+        |   @meeting_name                       DB query value
+        |   @res.data                           judge condition
+        |--------------------------------------------------------------------------
+        |	
+        |   1.get user openid by wx.cloud.callFunction()
+        |   2.get user selected exhibitors（this exhibitors get by onLoad function ）
+        |   3.according to 1 and 2, query DB => whether user has booked this exhibitors
+        | 
+        */ 
         wx.cloud.callFunction({
             name: 'login',
             success: res => {
@@ -361,9 +408,8 @@ Page({
                 this.setData({
                     userOpenId: res.result.openid
                 })
-                // Judging whether the current user has reserved the exhibitor
                 db.collection("book_meeting").where({
-                    _openid: res.result.openid,
+                    meeting_sponsor_openid: res.result.openid,
                     meeting_name: this.data.meeting_name,
                 }).get().then(res=>{
                     if(res.data.length > 0){
@@ -386,17 +432,25 @@ Page({
         })
 
         // get valid date and set this page data
+        /*
+        |--------------------------------------------------------------------------      
+        |   @meeting_name                       DB query value
+        |   @res.data                           judge condition
+        |--------------------------------------------------------------------------
+        |	
+        |   1.Get current exhibitors sas been reserved meeting date
+        |   2.Calculate the meeting date that the current exhibitors is not booked
+        |   3.set page data => dateList by this.date
+        */ 
         db.collection("book_meeting").where({
             meeting_name: this.data.meeting_name,
         }).get().then(res=>{
-            // get this exhibitors has meeting_date
             let currentExhibitorsMeeingDate = res.data.map(x=>{return x.meeting_date})
 
             this.setData({
-                date:this.getUseDate(this.data.date,currentExhibitorsMeeingDate)
+                date: this.getUseDate(this.data.date,currentExhibitorsMeeingDate)
             })
             
-            // set this data => dateList by this.date
             for(let i=0; i<this.data.date.length; i++){
                 this.data.dateList[i]={}
                 this.data.dateList[i].id = i
