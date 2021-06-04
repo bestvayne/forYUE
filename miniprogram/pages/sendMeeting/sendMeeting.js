@@ -71,9 +71,32 @@ Page({
             "2021-04-22",
         ],
         dateIndex:0,
-        dateList:[],
+        dateList:[
+            {
+                id:0,
+                name:'请选择预约日期'
+            },
+            {
+                id:1,
+                name:'2021-04-20'
+            },
+            {
+                id:2,
+                name:'2021-04-21'
+            },
+            {
+                id:3,
+                name:'2021-04-22'
+            }
+        ],
 
         time:[
+            '请选择预约时段',
+            "13:00~14:00",
+            "15:00~16:00",
+            "17:00~18:00",
+        ],
+        timeTemplete:[
             '请选择预约时段',
             "13:00~14:00",
             "15:00~16:00",
@@ -101,52 +124,6 @@ Page({
     },
 
     pickerExhibitors: function(e){
-        // console.log('picker发送选择改变，携带值为', e.detail.value)
-        
-        // get valid date and set this page data
-        db.collection("book_meeting").where({
-
-
-            /*
-            |--------------------------------------------------------------------------
-            |   @res	                            DB function callback value
-            |   @this.data.dateTemplete             page global variable
-            |   @currentExhibitorsMeeingDate        local variable
-            |--------------------------------------------------------------------------
-            |	get this exhibitors has meeting_date
-            | 
-            */ 
-            meeting_name: this.data.exhibitorsList[e.detail.value].name,
-        }).get().then(res=>{
-
-
-            /*
-            |--------------------------------------------------------------------------
-            |   @getUseDate()	                    function
-            |   @this.data.dateTemplete             page global variable
-            |   @currentExhibitorsMeeingDate        local variable
-            |--------------------------------------------------------------------------
-            |	
-            |   1.Get current exhibitors sas been reserved meeting date
-            |   2.Calculate the meeting date that the current exhibitors is not booked
-            |   3.set page data => dateList by this.date
-            |   !!! this setData function, I use this.data.dateTemplete data,
-            |   because use this.data.date will cause data update error
-            | 
-            */ 
-           let currentExhibitorsMeeingDate = res.data.map(x=>{return x.meeting_date})
-            this.setData({
-                date: this.getUseDate(this.data.dateTemplete,currentExhibitorsMeeingDate)
-            })
-            
-            for(let i=0; i<this.data.date.length; i++){
-                this.data.dateList[i]={}
-                this.data.dateList[i].id = i
-                this.data.dateList[i].name = this.data.date[i]
-            }
-        })
-
-
         /*
         |--------------------------------------------------------------------------
         |   @meeting_sponsor_openid	            DB query value        
@@ -188,7 +165,48 @@ Page({
     },
 
     pickeDate: function(e){
-        // console.log('picker发送选择改变，携带值为', e.detail.value)
+        db.collection("book_meeting").where({
+
+            /*
+            |--------------------------------------------------------------------------
+            |   @res	                            DB function callback value
+            |   @this.data.timeTemplete             page global variable
+            |   @currentExhibitorsMeeingTime        local variable
+            |--------------------------------------------------------------------------
+            |	get this exhibitors has meeting_date
+            | 
+            */ 
+            meeting_name: this.data.meeting_name,
+            meeting_date: this.data.dateList[e.detail.value].name
+        }).get().then(res=>{
+            console.log(res)
+
+            /*
+            |--------------------------------------------------------------------------
+            |   @getUsableData()	                function
+            |   @this.data.timeTemplete             page global variable
+            |   @currentExhibitorsMeeingTime        local variable
+            |--------------------------------------------------------------------------
+            |	
+            |   1.Get current exhibitors and selected date has been reserved meeting time
+            |   2.Calculate the meeting time that the current exhibitors is not booked
+            |   3.set page data => timeList by this.time
+            |   !!! this setData function, I use this.data.dateTemplete data,
+            |   because use this.data.time will cause data update error
+            | 
+            */ 
+            let currentExhibitorsMeeingTime = res.data.map(x=>{return x.meeting_time})
+
+            this.setData({
+                time: this.getUsableData(this.data.timeTemplete,currentExhibitorsMeeingTime)
+            })
+
+            for(let i=0; i<this.data.time.length; i++){
+                this.data.timeList[i]={}
+                this.data.timeList[i].id = i
+                this.data.timeList[i].name = this.data.time[i]
+            }
+        })
         if(e.detail.value != 0){
             this.setData({
                 dateIndex: e.detail.value,
@@ -352,6 +370,7 @@ Page({
             this.data.send_meeting_phone,
             this.data.send_meeting_email,
         ]
+        console.log(verifyForm)
         // if(this.verifyFormDate(verifyForm)){
         //     wx.showLoading({
         //         title: '发送中',
@@ -371,7 +390,7 @@ Page({
         this.verifyFormDate(verifyForm).then(res=>console.log("res 是: "+res))
     },
 
-    getUseDate:function (arr1, arr2) {
+    getUsableData:function (arr1, arr2) {
         return arr1.concat(arr2).filter(function(v, i, arr) {
             return arr.indexOf(v) === arr.lastIndexOf(v);
         });
@@ -429,33 +448,6 @@ Page({
             fail: err => {
                 console.error('Retrieve user openid failed: ', err)
             },
-        })
-
-        // get valid date and set this page data
-        /*
-        |--------------------------------------------------------------------------      
-        |   @meeting_name                       DB query value
-        |   @res.data                           judge condition
-        |--------------------------------------------------------------------------
-        |	
-        |   1.Get current exhibitors sas been reserved meeting date
-        |   2.Calculate the meeting date that the current exhibitors is not booked
-        |   3.set page data => dateList by this.date
-        */ 
-        db.collection("book_meeting").where({
-            meeting_name: this.data.meeting_name,
-        }).get().then(res=>{
-            let currentExhibitorsMeeingDate = res.data.map(x=>{return x.meeting_date})
-
-            this.setData({
-                date: this.getUseDate(this.data.date,currentExhibitorsMeeingDate)
-            })
-            
-            for(let i=0; i<this.data.date.length; i++){
-                this.data.dateList[i]={}
-                this.data.dateList[i].id = i
-                this.data.dateList[i].name = this.data.date[i]
-            }
         })
     }
 })
