@@ -3,9 +3,6 @@ const app = getApp();
 const db = app.globalData.db
 Page({
 
-	/**
-	 * 页面的初始数据
-	 */
 	data: {
 		exhibitorsId: '',
 		exhibitorsInfo: '',
@@ -13,16 +10,13 @@ Page({
 		text_isShow: false,
 	},
 
-	// 自定义事件
-
-	// 点击 展示/收起 介绍文字
 	textIsShow: function () {
 		this.setData({
 			text_isShow: !this.data.text_isShow,
 		})
 	},
 
-	// 点击复制文本内容
+
 	copyText: function (e) {
 		wx.setClipboardData({
 			data: e.currentTarget.dataset.text,
@@ -38,7 +32,6 @@ Page({
 		})
 	},
 
-	// 打电话
 	callPhone: function () {
 		let that = this
 		wx.makePhoneCall({
@@ -47,21 +40,40 @@ Page({
 		})
 	},
 
-	// 下载文件
+	/*
+	|--------------------------------------------------------------------------
+	|   @fileID	                            file ID cloud://XXX url
+	|   @tempFilePath            			temporary file path
+	|   @wx.openDocument        			open this PDF file function
+	|--------------------------------------------------------------------------
+	|	get this exhibitors has meeting_date
+	| 
+	*/ 
 	downloadFile: function (e) {
+		wx.showLoading({
+			title: '正在打开文件',
+		})
 		wx.cloud.downloadFile({
-			fileID: e.currentTarget.dataset.filecloud, // 文件 ID
+			fileID: e.currentTarget.dataset.filecloud, 
 			success: res => {
-				console.log(res.tempFilePath)
+				console.log(res)
 				wx.openDocument({
 					filePath: res.tempFilePath,
 					success: function (res) {
-						console.log(res)
-					  console.log('打开文档成功')
+						wx.hideLoading()
+						console.log('打开文档成功')
+					  	console.log('打开文档成功')
 					}
 				})
 			},
-			fail: console.error
+			fail:function(e){
+				wx.hideLoading()
+				wx.showToast({
+					title: '文件打开失败',
+					image: '../../images/icon-error.png',
+					duration: 2000,
+			  	})
+			}
 		})
 	},
 

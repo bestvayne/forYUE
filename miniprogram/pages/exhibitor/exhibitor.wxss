@@ -322,6 +322,7 @@
 }
 
 .wechat-qr {
+    padding: 10rpx 0;
     width: 200rpx;
     height: 200rpx;
 }

@@ -18,6 +18,7 @@ Page({
             "Nonni Travel",
             "Iceland Europe Travel",
             "Elding",
+            "Travelling Iceland"
         ],
         exhibitorsIndex:0,
         exhibitorsList:[
@@ -54,6 +55,11 @@ Page({
                 id:6,
                 name:'Elding',
                 email:"saga@elding.is"
+            },
+            {
+                id:7,
+                name:'Travelling Iceland',
+                email:'helgabara@travellingiceland.com'
             }
         ],
 
@@ -371,22 +377,21 @@ Page({
             this.data.send_meeting_email,
         ]
         console.log(verifyForm)
-        // if(this.verifyFormDate(verifyForm)){
-        //     wx.showLoading({
-        //         title: '发送中',
-        //     })
-        //     const _that = this
-        //     await this.getMeetingExhibitorsThumbnail();
-        //     await this.createBookingMeetingToDB().then(res=>{
-        //         this.getMeetingInfo('book_meeting',res)
-        //     });
-        // }else{
-        //     wx.showToast({
-        //         title: '请完整填写表单',
-        //         image: '../../images/icon-error.png',
-        //         duration: 2000,
-        //     })
-        // }
+        if(this.verifyFormDate(verifyForm)){
+            wx.showLoading({
+                title: '发送中',
+            })
+            await this.getMeetingExhibitorsThumbnail();
+            await this.createBookingMeetingToDB().then(res=>{
+                this.getMeetingInfo('book_meeting',res)
+            });
+        }else{
+            wx.showToast({
+                title: '请完整填写表单',
+                image: '../../images/icon-error.png',
+                duration: 2000,
+            })
+        }
         this.verifyFormDate(verifyForm).then(res=>console.log("res 是: "+res))
     },
 
